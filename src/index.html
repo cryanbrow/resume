@@ -53,7 +53,8 @@
         };
 
         function processCommand(input) {
-            result = splitInput(input)
+            var splitString = 'user@bryan-crow.com:~$ ';
+            result = splitInput(input, splitString)
             if (result != undefined && result == 'clear') {
                 removeChildrenWithId(terminal)
                 return '';
@@ -61,8 +62,7 @@
             return approvedCommands[result] + '\n' || 'command not found \n';
         }
 
-        function splitInput(inputString) {
-            var splitString = 'user@bryan-crow.com:~$ ';
+        function splitInput(inputString, splitString) {
             if (inputString.includes(splitString)) {
                 return inputString.split(splitString)[1];
             } else {
@@ -83,19 +83,41 @@
         function createMOTD() {
             var motdLines = ['Welcome to Bryan Crow Resume 1.0.0 LTS',
             '  ',
+            '|site|* LinkedIn ~https://www.linkedin.com/in/bryan-crow/',
+            '|site|* GitHub ~https://github.com/cryanbrow',
+            '  ',
             'This is an Interactive resume. To get started, enter help to get available commands',
             'or enter experience, about, or projects to get started.',
             '  ',
             'All files supporting this are in the pwd, use ls and cat to read files directly.',
             '  ']
             for (var i = 0; i < motdLines.length; i++) {
-                line = document.createElement('div');
-                line.id = 'line';
-                motdSpan = document.createElement('span');
-                motdSpan.id = 'motd1';
-                motdSpan.textContent = motdLines[i];
-                line.appendChild(motdSpan);
-                terminal.appendChild(line);
+                if (motdLines[i].startsWith('|site|')) {
+                    result = splitInput(input, '|site|')
+
+                    urlComponents = result.split('~');
+
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    urlLabelSpan = document.createElement('span');
+                    urlLabelSpan.id = 'urlLabelSpan' + i;
+                    urlLabelSpan.textContent = urlComponents[0];
+                    urlHref = document.createElement('a');
+                    urlHref.id = 'href' + i;
+                    urlHref.setAttribute('href', urlComponents[1])
+                    urlHref.textContent(urlComponents[1])
+                    line.appendChild(motdSpan);
+                    line.appendChild(urlHref);
+                    terminal.appendChild(line);
+                } else {
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    motdSpan = document.createElement('span');
+                    motdSpan.id = 'motd' + i;
+                    motdSpan.textContent = motdLines[i];
+                    line.appendChild(motdSpan);
+                    terminal.appendChild(line);
+                }
             }
         }
 
