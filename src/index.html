@@ -55,11 +55,12 @@
         function processCommand(input) {
             var splitString = 'user@bryan-crow.com:~$ ';
             result = splitInput(input, splitString)
+            console.log(result);
             if (result !== undefined && result == 'clear') {
                 removeChildrenWithId(terminal)
                 return '';
             }
-            if (result === undefined) {
+            if (result == undefined) {
                 return '';
             }
             return approvedCommands[result] + '\n' || 'command not found \n';
