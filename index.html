@@ -52,6 +52,7 @@
             result = splitInput(input)
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
+                return '';
             }
             return approvedCommands[result] || 'command not found';
         }
