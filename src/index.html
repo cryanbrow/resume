@@ -54,16 +54,18 @@
 
         function processCommand(input) {
             var splitString = 'user@bryan-crow.com:~$ ';
+            var returnString = '';
             result = splitInput(input, splitString)
             console.log(result);
             if (result !== undefined && result == 'clear') {
                 removeChildrenWithId(terminal)
-                return '';
+                returnString = '';
+            } else {
+                returnString = approvedCommands[result] || 'command not found';
+                returnString += '\n'
             }
-            if (result == undefined) {
-                return '';
-            }
-            return approvedCommands[result] || 'command not found';
+
+            return returnString;
         }
 
         function splitInput(inputString, splitString) {
@@ -148,7 +150,7 @@
                 //terminal.innerHTML += output;
                 line = document.createElement('div');
                 line.id = 'line';
-                line.textContent = output + '\n';
+                line.textContent = output;
                 terminal.appendChild(line);
                 input = document.createElement('span');
                 input.id = 'input';
