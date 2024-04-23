@@ -57,6 +57,7 @@
                 user_info = document.createElement('span');
                 user_info.id = 'user_info';
                 user_info.textContent = 'user@bryan-crow.com:~$ ';
+                line.appendChild(user_info)
                 line.appendChild(cursor);
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
