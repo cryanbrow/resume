@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <div id="terminal"><div id="line"><span id="input"></span><span id="cursor">_</span></div></div>
+    <div id="terminal"><div id="line"><span id="input"></span><span id="user_info">user@bryan-crow.com</span><span id="cursor">_</span></div></div>
     <script>
         var terminal = document.getElementById('terminal');
         var line = document.getElementById('line');
@@ -54,6 +54,9 @@
                 cursor = document.createElement('span');
                 cursor.id = 'cursor';
                 cursor.textContent = '_';
+                user_info = document.createElement('span');
+                user_info.id = 'user_info';
+                user_info.textContent = 'user@bryan-crow.com';
                 line.appendChild(cursor);
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
