@@ -54,7 +54,7 @@
                 removeChildrenWithId(terminal)
                 return '';
             }
-            return approvedCommands[result] || 'command not found';
+            return approvedCommands[result] + '\n' || 'command not found \n';
         }
 
         function splitInput(inputString) {
@@ -84,7 +84,7 @@
                 //terminal.innerHTML += output;
                 line = document.createElement('div');
                 line.id = 'line';
-                line.textContent = output + '\n'
+                line.textContent = output;
                 terminal.appendChild(line);
                 input = document.createElement('span');
                 input.id = 'input';
