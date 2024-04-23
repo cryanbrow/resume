@@ -45,10 +45,14 @@
             'ls': 'file1.txt  file2.txt  directory1  directory2',
             'pwd': '/home/user',
             'whoami': 'user',
+            'clear': '',
         };
 
         function processCommand(input) {
             result = splitInput(input)
+            if (result == 'clear') {
+                removeChildrenWithId(terminal)
+            }
             return approvedCommands[result] || 'command not found';
         }
 
@@ -58,6 +62,16 @@
                 return inputString.split(splitString)[1];
             } else {
                 return "The specified string is not found in the input.";
+            }
+        }
+
+        function removeChildrenWithId(element) {
+            var children = element.childNodes;
+            for (var i = 0; i < children.length; i++) {
+                if (children[i].id === 'line') {
+                    element.removeChild(children[i]);
+                    i--; // Adjust counter as childNodes is a live collection
+                }
             }
         }
 
