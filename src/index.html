@@ -56,8 +56,10 @@
             var splitString = 'user@bryan-crow.com:~$ ';
             result = splitInput(input, splitString)
             if (result !== undefined && result == 'clear') {
-                console.log('hit if')
                 removeChildrenWithId(terminal)
+                return '';
+            }
+            if (result === undefined) {
                 return '';
             }
             return approvedCommands[result] + '\n' || 'command not found \n';
