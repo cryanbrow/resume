@@ -63,7 +63,7 @@
             if (result == undefined) {
                 return '';
             }
-            return approvedCommands[result] + '\n' || 'command not found';
+            return approvedCommands[result] || 'command not found';
         }
 
         function splitInput(inputString, splitString) {
@@ -148,7 +148,7 @@
                 //terminal.innerHTML += output;
                 line = document.createElement('div');
                 line.id = 'line';
-                line.textContent = output;
+                line.textContent = output + '\n';
                 terminal.appendChild(line);
                 input = document.createElement('span');
                 input.id = 'input';
