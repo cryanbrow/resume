@@ -46,7 +46,7 @@
         var input = document.getElementById('input');
         var cursor = document.getElementById('cursor');
         var approvedCommands = {
-            'ls': 'file1.txt  file2.txt  directory1  directory2',
+            'ls': 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2',
             'pwd': '/home/user',
             'whoami': 'user',
             'clear': '',
@@ -55,7 +55,8 @@
         function processCommand(input) {
             var splitString = 'user@bryan-crow.com:~$ ';
             result = splitInput(input, splitString)
-            if (result != undefined && result == 'clear') {
+            if (result !== undefined && result == 'clear') {
+                console.log('hit if')
                 removeChildrenWithId(terminal)
                 return '';
             }
