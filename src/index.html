@@ -93,7 +93,7 @@
             '  ']
             for (var i = 0; i < motdLines.length; i++) {
                 if (motdLines[i].startsWith('|site|')) {
-                    result = splitInput(input, '|site|')
+                    result = splitInput(motdLines[i], '|site|')
 
                     urlComponents = result.split('~');
 
