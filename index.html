@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         body {
@@ -7,23 +8,36 @@
             color: #0F0;
             font-family: monospace;
         }
+
         #terminal {
             white-space: pre;
             overflow-wrap: normal;
             width: 100%;
             height: 100vh;
         }
+
         #cursor {
             animation: blink 1s step-end infinite;
         }
+
         @keyframes blink {
-            from, to { color: transparent }
-            50% { color: #0F0; }
+
+            from,
+            to {
+                color: transparent
+            }
+
+            50% {
+                color: #0F0;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div id="terminal"><div id="line"><span id="input">user@bryan-crow.com:~$ </span><span id="cursor">_</span></div></div>
+    <div id="terminal">
+        <div id="line"><span id="input">user@bryan-crow.com:~$ </span><span id="cursor">_</span></div>
+    </div>
     <script>
         var terminal = document.getElementById('terminal');
         var line = document.getElementById('line');
@@ -36,7 +50,17 @@
         };
 
         function processCommand(input) {
-            return approvedCommands[input] || 'command not found';
+            result = splitInput(input)
+            return approvedCommands[result] || 'command not found';
+        }
+
+        function splitInput(inputString) {
+            var splitString = 'user@bryan-crow.com:~$ ';
+            if (inputString.includes(splitString)) {
+                return inputString.split(splitString)[1];
+            } else {
+                return "The specified string is not found in the input.";
+            }
         }
 
         window.addEventListener('keydown', function (e) {
@@ -66,4 +90,5 @@
         });
     </script>
 </body>
+
 </html>
