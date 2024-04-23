@@ -104,7 +104,8 @@
                     urlLabelSpan.textContent = urlComponents[0];
                     urlHref = document.createElement('a');
                     urlHref.id = 'href' + i;
-                    urlHref.setAttribute('href', urlComponents[1])
+                    urlHref.setAttribute('href', urlComponents[1]);
+                    urlHref.innerHTML(urlComponents[1]);
                     line.appendChild(motdSpan);
                     line.appendChild(urlHref);
                     terminal.appendChild(line);
