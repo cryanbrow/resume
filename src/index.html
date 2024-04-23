@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div id="terminal"><div id="line"><span id="input">user@bryan-crow.com:~$ </span><span id="cursor">_</span></div></div>
+    <div id="terminal"></div>
     <script>
         var terminal = document.getElementById('terminal');
         var line = document.getElementById('line');
@@ -47,6 +47,18 @@
             'whoami': 'user',
             'clear': '',
         };
+
+        line = document.createElement('div');
+        line.id = 'line';
+        inputSpan = document.createElement('span');
+        inputSpan.id = 'input';
+        inputSpan.textContent = 'user@bryan-crow.com:~$ '
+        cursorSpan = document.createElement('span');
+        cursorSpan.id = 'cursor';
+        cursorSpan.textContent = '_';
+        line.innerHTML += inputSpan;
+        line.innerHTML += cursorSpan;
+        terminal.innerHTML += line;
 
         function processCommand(input) {
             result = splitInput(input)
@@ -74,6 +86,10 @@
                     i--; // Adjust counter as childNodes is a live collection
                 }
             }
+        }
+
+        function createMOTD() {
+            
         }
 
         window.addEventListener('keydown', function (e) {
