@@ -50,6 +50,7 @@
             'pwd': '/home/user',
             'whoami': 'user',
             'clear': '',
+            'motd': '',
         };
 
         function processCommand(input) {
@@ -57,9 +58,10 @@
             var returnString = '';
             result = splitInput(input, splitString)
             console.log(result);
-            if (result !== undefined && result == 'clear') {
+            if (result == 'clear') {
                 removeChildrenWithId(terminal)
-                returnString = '';
+            } else if (result == 'motd') {
+                createMOTD();
             } else {
                 returnString = approvedCommands[result] || 'command not found';
                 returnString += '\n'
