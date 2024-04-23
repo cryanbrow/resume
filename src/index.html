@@ -63,7 +63,7 @@
             if (result == undefined) {
                 return '';
             }
-            return approvedCommands[result] || 'command not found';
+            return approvedCommands[result] + '\n' || 'command not found';
         }
 
         function splitInput(inputString, splitString) {
