@@ -56,9 +56,9 @@
         cursorSpan = document.createElement('span');
         cursorSpan.id = 'cursor';
         cursorSpan.textContent = '_';
-        line.innerHTML += inputSpan;
-        line.innerHTML += cursorSpan;
-        terminal.innerHTML += line;
+        line.appendChild(inputSpan);
+        line.appendChild(cursorSpan);
+        terminal.appendChild(line);
 
         function processCommand(input) {
             result = splitInput(input)
