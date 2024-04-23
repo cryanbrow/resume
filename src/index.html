@@ -54,7 +54,7 @@
 
         function processCommand(input) {
             result = splitInput(input)
-            if (result == 'clear') {
+            if (result != undefined && result == 'clear') {
                 removeChildrenWithId(terminal)
                 return '';
             }
