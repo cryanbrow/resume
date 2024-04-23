@@ -105,6 +105,7 @@
                     urlHref = document.createElement('a');
                     urlHref.id = 'href' + i;
                     urlHref.setAttribute('href', urlComponents[1]);
+                    urlHref.setAttribute('target', '_blank');
                     urlHref.textContent = urlComponents[1];
                     line.appendChild(urlLabelSpan);
                     line.appendChild(urlHref);
