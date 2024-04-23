@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #000;
+            color: #0F0;
+            font-family: monospace;
+        }
+        #terminal {
+            white-space: pre;
+            overflow-wrap: normal;
+            width: 100%;
+            height: 100vh;
+        }
+        #cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { color: transparent }
+            50% { color: #0F0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"><div id="line"><span id="input"></span><span id="cursor">_</span></div></div>
+    <script>
+        var terminal = document.getElementById('terminal');
+        var line = document.getElementById('line');
+        var input = document.getElementById('input');
+        var cursor = document.getElementById('cursor');
+        var approvedCommands = {
+            'ls': 'file1.txt  file2.txt  directory1  directory2',
+            'pwd': '/home/user',
+            'whoami': 'user',
+        };
+
+        function processCommand(input) {
+            return approvedCommands[input] || 'command not found';
+        }
+
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                var output = processCommand(input.textContent);
+                cursor.remove();
+                terminal.innerHTML += output;
+                line = document.createElement('div');
+                line.id = 'line';
+                terminal.appendChild(line);
+                input = document.createElement('span');
+                input.id = 'input';
+                line.appendChild(input);
+                cursor = document.createElement('span');
+                cursor.id = 'cursor';
+                cursor.textContent = '_';
+                line.appendChild(cursor);
+            } else if (e.key.length === 1) {
+                input.textContent += e.key;
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                input.textContent = input.textContent.slice(0, -1);
+            }
+        });
+    </script>
+</body>
+</html>
