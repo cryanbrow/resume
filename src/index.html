@@ -54,7 +54,22 @@
             'motd': '',
             'cd': '',
             'cat': '',
+            'ls -al': '',
+            'll': '',
         };
+        var directoryListings = {
+            '/': ['home', 'usr', 'var', 'opt', 'lib', 'tmp'],
+            '/home': ['user', 'bryan'],
+            '/home/user': ['experience.yml', 'projects.yml', 'about-me.yml'],
+            '/home/bryan': ['experience.yml', 'projects.yml', 'about-me.yml'],
+            '/usr': ['local', 'bin'],
+            '/usr/local': [],
+            '/usr/bin': ['kubectl', 'cat', 'cd', 'motd', 'clear', 'ls', 'pwd'],
+            '/var': [],
+            '/opt': [],
+            '/lib': [],
+            '/tmp': [],
+        }
 
         function processCommand(input) {
             var splitString = 'user@bryan-crow.com:~$ ';
@@ -185,6 +200,13 @@
                 input.textContent = input.textContent.slice(0, -1);
             }
         });
+
+        var target = document.getElementById("input")[0];
+
+        if (event.target != target) {
+            target.focus();
+            target.click();
+        }
     </script>
 </body>
 
