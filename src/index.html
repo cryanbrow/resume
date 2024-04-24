@@ -45,6 +45,7 @@
         var line = document.getElementById('line');
         var input = document.getElementById('input');
         var cursor = document.getElementById('cursor');
+        var current_dir = '/home/user'
         var approvedCommands = {
             'ls': 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2',
             'pwd': '/home/user',
@@ -52,6 +53,7 @@
             'clear': '',
             'motd': '',
             'cd': '',
+            'cat': '',
         };
 
         function processCommand(input) {
@@ -64,14 +66,24 @@
             } else if (result == 'motd') {
                 createMOTD();
             } else if (result.startsWith('cd')) {
-                returnString = 'Trying to snoop around?';
+                returnString = handleCd(result);
                 returnString += '\n';
-            } else {
+            } else if (result.startsWith('cat')) {
+                returnString = handleCatInput(result);
+                returnString += '\n';
+            }else {
                 returnString = approvedCommands[result] || 'command not found';
-                returnString += '\n'
+                returnString += '\n';
             }
-
             return returnString;
+        }
+
+        function handleCd(inputString) {
+            return 'changing dir';
+        }
+
+        function handleCatInput(inputString) {
+            return 'You certainly tried to cat something.';
         }
 
         function splitInput(inputString, splitString) {
