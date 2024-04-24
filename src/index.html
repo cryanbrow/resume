@@ -201,12 +201,13 @@
             }
         });
 
-        var target = document.getElementById("input")[0];
+        button.addEventListener("click", () => {
+            input.focus();
+        });
 
-        if (event.target != target) {
-            target.focus();
-            target.click();
-        }
+        setTimeout(() => {
+            input.focus();
+        }, 1000);
     </script>
 </body>
 
