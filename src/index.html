@@ -45,10 +45,10 @@
         var line = document.getElementById('line');
         var input = document.getElementById('input');
         var cursor = document.getElementById('cursor');
-        var current_dir = '/home/user'
+        var pwd = '/home/user'
         var approvedCommands = {
-            'ls': 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2',
-            'pwd': '/home/user',
+            'ls': '',
+            'pwd': '',
             'whoami': 'user',
             'clear': '',
             'motd': '',
@@ -87,7 +87,11 @@
             } else if (result.startsWith('cat')) {
                 returnString = handleCatInput(result);
                 returnString += '\n';
-            }else {
+            } else if (result.startsWith('ls')) {
+                return 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2';
+            } else if (result.startsWith('pwd')){
+                return pwd;
+            } else {
                 returnString = approvedCommands[result] || 'command not found';
                 returnString += '\n';
             }
