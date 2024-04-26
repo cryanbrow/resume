@@ -91,13 +91,12 @@
                 returnString = handleCatInput(result);
                 returnString += '\n';
             } else if (result.startsWith('ls')) {
-                return 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2';
+                returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
             } else if (result.startsWith('pwd')){
                 returnString = pwd + '\n';
             } else {
                 returnString = approvedCommands[result] || 'command not found';
                 returnString += '\n';
-                console.log("returnString: " + returnString);
             }
             return returnString;
         }
