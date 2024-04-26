@@ -21,7 +21,8 @@
         }
 
         #hidden-input {
-            display: none;
+            background-color: #000;
+            color: #0F0;
         }
 
         @keyframes blink {
@@ -39,7 +40,7 @@
 </head>
 
 <body>
-    <div id="outer-div" onclick="focusMethod()"><div id="terminal"></div><input type="text"></input></div>
+    <div id="outer-div" onclick="focusMethod()"><div id="terminal"></div><input type="text" id="hidden-input"></input></div>
     <script>
         var terminal = document.getElementById('terminal');
 
