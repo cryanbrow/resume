@@ -80,7 +80,6 @@
             var splitString = 'user@bryan-crow.com:~$ ';
             var returnString = '';
             result = splitInput(input, splitString)
-            console.log(result);
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
             } else if (result == 'motd') {
@@ -94,7 +93,7 @@
             } else if (result.startsWith('ls')) {
                 return 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2';
             } else if (result.startsWith('pwd')){
-                return pwd;
+                returnString = pwd + '\n';
             } else {
                 returnString = approvedCommands[result] || 'command not found';
                 returnString += '\n';
