@@ -9,7 +9,7 @@
             font-family: monospace;
         }
 
-        #terminal {
+        #outer-div {
             white-space: pre;
             overflow-wrap: normal;
             width: 100%;
@@ -39,8 +39,7 @@
 </head>
 
 <body>
-    <div id="terminal"></div>
-    <input type="text"></input>
+    <div id="outer-div" onclick="focusMethod()"><div id="terminal"></div><input type="text" id="hidden-input"></input></div>
     <script>
         var terminal = document.getElementById('terminal');
 
@@ -210,6 +209,10 @@
                 input.textContent = input.textContent.slice(0, -1);
             }
         });
+
+        focusMethod = function getFocus() {           
+            document.getElementById("hidden-input").focus();
+        }
 
     </script>
 </body>
