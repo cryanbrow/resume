@@ -191,7 +191,10 @@
                 e.preventDefault();
                 var output = processCommand(input.textContent);
                 cursor.remove();
-                //terminal.innerHTML += output;
+                line = document.createElement('div');
+                line.id = 'line';
+                line.textContent = output;
+                terminal.appendChild(line);
                 buildLine();
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
