@@ -41,9 +41,10 @@
         var terminal = document.getElementById('terminal');
 
         createMOTD();
-        buildFirstLine();
+        buildLine();
 
         var line = document.getElementById('line');
+        var header = document.getElementById('header');
         var input = document.getElementById('input');
         var cursor = document.getElementById('cursor');
         var pwd = '/home/user'
@@ -170,16 +171,20 @@
             }
         }
 
-        function buildFirstLine() {
+        function buildLine() {
             line = document.createElement('div');
             line.id = 'line';
+            headerSpan = document.createElement('span');
+            headerSpan.id = 'header';
+            headerSpan.textContent = 'user@bryan-crow.com:~$ '
             inputSpan = document.createElement('span');
             inputSpan.id = 'input';
-            inputSpan.textContent = 'user@bryan-crow.com:~$ '
+            inputSpan.textContent = ''
             cursorSpan = document.createElement('span');
             cursorSpan.id = 'cursor';
             cursorSpan.textContent = '_';
             line.appendChild(inputSpan);
+            line.appendChild(headerSpan);
             line.appendChild(cursorSpan);
             terminal.appendChild(line);
         }
@@ -190,18 +195,7 @@
                 var output = processCommand(input.textContent);
                 cursor.remove();
                 //terminal.innerHTML += output;
-                line = document.createElement('div');
-                line.id = 'line';
-                line.textContent = output;
-                terminal.appendChild(line);
-                input = document.createElement('span');
-                input.id = 'input';
-                input.textContent = 'user@bryan-crow.com:~$ ';
-                line.appendChild(input);
-                cursor = document.createElement('span');
-                cursor.id = 'cursor';
-                cursor.textContent = '_';
-                line.appendChild(cursor);
+                buildLine();
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
             } else if (e.key === 'Backspace') {
