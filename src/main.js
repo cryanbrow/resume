@@ -92,10 +92,33 @@ let directoryStructure = {
                     group: 'root',
                     size: '4',
                     dt: '2024-05-05 21:13',
-                    name: 'touch'
+                    name: 'sudoers'
                 },
             ],
-            directories: []
+            directories: [
+                {
+                    attributes: 'drwxr-x-r-x',
+                    links: '1',
+                    user: 'root',
+                    group: 'root',
+                    size: '0',
+                    dt: '2024-05-05 21:13',
+                    name: 'systemd',
+                    files: [
+                        {
+                            attributes: '-rw-r--r---',
+                            executable: false,
+                            links: '1',
+                            user: 'root',
+                            group: 'root',
+                            size: '4',
+                            dt: '2024-05-05 21:13',
+                            name: 'user.conf'
+                        },
+                    ],
+                    directories: []
+                },
+            ]
         },
         {
             attributes: 'drwxr-x-r-x',
