@@ -13,7 +13,7 @@
             white-space: pre;
             overflow-wrap: normal;
             width: 100%;
-            height: 100vh;
+            height: 95vh;
         }
 
         #cursor {
@@ -180,11 +180,11 @@
             inputSpan = document.createElement('span');
             inputSpan.id = 'input';
             inputSpan.textContent = ''
-            cursorSpan = document.createElement('span');
-            cursorSpan.id = 'cursor';
-            cursorSpan.textContent = '_';
-            line.appendChild(inputSpan);
+            cursor = document.createElement('span');
+            cursor.id = 'cursor';
+            cursor.textContent = '_';
             line.appendChild(headerSpan);
+            line.appendChild(inputSpan);
             line.appendChild(cursorSpan);
             terminal.appendChild(line);
         }
