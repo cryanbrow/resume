@@ -177,14 +177,14 @@
             headerSpan = document.createElement('span');
             headerSpan.id = 'header';
             headerSpan.textContent = 'user@bryan-crow.com:~$ '
-            inputSpan = document.createElement('span');
-            inputSpan.id = 'input';
-            inputSpan.textContent = ''
+            input = document.createElement('span');
+            input.id = 'input';
+            input.textContent = ''
             cursor = document.createElement('span');
             cursor.id = 'cursor';
             cursor.textContent = '_';
             line.appendChild(headerSpan);
-            line.appendChild(inputSpan);
+            line.appendChild(input);
             line.appendChild(cursor);
             terminal.appendChild(line);
         }
