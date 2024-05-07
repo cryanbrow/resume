@@ -75,10 +75,7 @@
             '/tmp': [],
         }
 
-        function processCommand(input) {
-            var splitString = 'user@bryan-crow.com:~$ ';
-            var returnString = '';
-            result = splitInput(input, splitString)
+        function processCommand(result) {
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
             } else if (result.startsWith('resume')){
@@ -174,16 +171,16 @@
         function buildLine() {
             line = document.createElement('div');
             line.id = 'line';
-            headerSpan = document.createElement('span');
-            headerSpan.id = 'header';
-            headerSpan.textContent = 'user@bryan-crow.com:~$ '
+            header = document.createElement('span');
+            header.id = 'header';
+            header.textContent = 'user@bryan-crow.com:~$ '
             input = document.createElement('span');
             input.id = 'input';
             input.textContent = ''
             cursor = document.createElement('span');
             cursor.id = 'cursor';
             cursor.textContent = '_';
-            line.appendChild(headerSpan);
+            line.appendChild(header);
             line.appendChild(input);
             line.appendChild(cursor);
             terminal.appendChild(line);
