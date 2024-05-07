@@ -76,6 +76,7 @@
         }
 
         function processCommand(result) {
+            returnString = '';
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
             } else if (result.startsWith('resume')){
