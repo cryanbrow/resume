@@ -81,7 +81,8 @@
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
             } else if (result.startsWith('resume')){
-                handleResumeCommand(result);
+                returnString += handleResumeCommand(result);
+                returnString += '\n';
             } else if (result == 'motd') {
                 createMOTD();
             } else if (result.startsWith('cd')) {
