@@ -80,6 +80,8 @@
             result = splitInput(input, splitString)
             if (result == 'clear') {
                 removeChildrenWithId(terminal)
+            } else if (result.startsWith('resume')){
+                handleResumeCommand(result);
             } else if (result == 'motd') {
                 createMOTD();
             } else if (result.startsWith('cd')) {
@@ -215,6 +217,25 @@
             console.log("You are using a mobile device");
         } else {
             console.log("You are not using a mobile device");
+        }
+
+        function handleResumeCommand(command) {
+            var returnString = '';
+            if (result.startsWith('resume')){
+                var resumeCommand = command.replace('resume', '').trim();
+                if (resumeCommand) {
+                    switch (true) {
+                        case resumeCommand.includes("--"):
+                            returnString += 'found --';
+                            break;
+                        default:
+                            returnString += 'invalid resume command';
+                    }
+                } else {
+                    returnString += "everything resume"
+                }
+            }
+            return returnString;
         }
 
     </script>
