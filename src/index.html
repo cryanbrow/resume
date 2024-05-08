@@ -247,22 +247,27 @@
         }
 
         function handleResumeCommand(command) {
+            console.log("in handleResume")
             var returnString = '';
             if (result.startsWith('resume')){
+                console.log("starts with resume")
                 var resumeCommand = command.replace('resume', '').trim();
                 if (resumeCommand) {
                     switch (true) {
                         case resumeCommand.includes("--"):
+                            console.log("contains --")
                             returnString += skills;
-                            console.log(returnString);
                             break;
                         default:
+                            console.log("default")
                             returnString += 'invalid resume command';
                     }
                 } else {
+                    console.log("everything resume")
                     returnString += "everything resume"
                 }
             }
+            console.log(returnString);
             return returnString;
         }
 
