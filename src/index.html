@@ -20,7 +20,6 @@
             animation: blink 1s step-end infinite;
         }
 
-
         @keyframes blink {
 
             from,
@@ -77,42 +76,44 @@
             "*                                                                  Experience                                                                  *",
             "************************************************************************************************************************************************",
             "                                                                                                                                                ",
-            "012345678901234567890123456789012345679012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234",
-            "                                                                     |2022|                                                                     ",
+            "FedEx/Chief Engineering Specialist Principal ────────────────────────┤2022|                                                                     ",
+            "                                                                     |    |                                                                     ",
+            "Led the rollout of dimensioning in motion for increased revenue      |    |                                                                     ",
+            "recovery by FedEx Freight. Completed proof of concept for migrating  |    |                                                                     ",
+            "far edge technologies to the near edge. Broadened oversight to       |    |                                                                     ",
+            "help a wider array of teams beyond immediate team in retiring        |2018├──────────────────────────────────── FedEx/Software Developer Advisor",
+            "legacy systems, hardening of critical business systems, and          |    |                                                                     ",
+            "migration of a FedEx owned data center to a managed data center.     |    |          Led a team in adoption of technologies and practices around",
+            "                                                                     |    |    Kubernetes. Implemented proofs of concepts to determine viability",
+            "- Rolled out dimensioning in motion software to 150+ service centers |    |    of new technologies such as Kubernetes, Helm, Docker, Prometheus,",
+            "- Resulted in 25 million dollars in recovered revenue per quarter    |    |      Alert Manager, Grafana, and other technologies for supporting a",
+            "- Filed 8 patents surrounding real time location tracking with RFID  |    |     far edge ecosystem. Continued refinement of the edge ecosystem,,",
+            "                                                                     |    |                    and the first adoption of OKTA OAuth2 at Freight.",
+            "FedEx/Senior Programmer Analyst ─────────────────────────────────────|2016|                                                                     ",
+            "                                                                     |    |   - Implemented anedge security solution with trenching capabilities",
+            "Spearheaded adoption of Cassandra, Kafka, Spring Boot, and           |    |   - Pioneered Kubernetes adoption in production for FedEx           ",
+            "microservice architecture in building the RFID stack. Built and led  |    |   - Architecture guidance for the rewriting the forklift computer   ",
+            "workshops for onboarding new team members onto the RFID stack and    |    |                                                                     ",
+            "new technologies for rapid adoption. Built technologies for tracking |2013├──────────────────────────────────────────── FedEx/Programmer Analyst",
+            "RFID tags in real time using a distributed edge compute model.       |    |                                                                     ",
+            "                                                                     |    |                                                                     ",
+            "- Established Kafka and Cassandra implementation at FedEx            |    |                                                                     ",
+            "- Created visualizer to display location of shipments and forklifts  |    |                                                                     ",
+            "                                                                     |    |                                                                     ",
+            "FedEx/Associate Programmer Analyst ──────────────────────────────────┤2012|                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |2018|                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |2016|                                                                     ",
+            "                                                                     |2011├──────────────────────────────────────── FedEx/Lead Computer Operator",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
+            "FedEx/Computer Operator ─────────────────────────────────────────────┤2007|                                                                     ",
             "                                                                     |    |                                                                     ",
             "                                                                     |    |                                                                     ",
-            "                                                                     |2013|                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |2012|                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |2011|                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |    |                                                                     ",
-            "                                                                     |2007|                                                                     "];
+            "                                                                     |    |                                                                     ",];
 
         var terminal = document.getElementById('terminal');
 
@@ -305,6 +306,14 @@
                                 line = document.createElement('div');
                                 line.id = 'line';
                                 line.textContent = skill;
+                                terminal.appendChild(line);
+                            });
+                            break;
+                        case resumeCommand.includes("experience"):
+                            experience.forEach(exper => {
+                                line = document.createElement('div');
+                                line.id = 'line';
+                                line.textContent = exper;
                                 terminal.appendChild(line);
                             });
                             break;
