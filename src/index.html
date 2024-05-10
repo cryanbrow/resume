@@ -272,6 +272,7 @@
                 line.textContent = output;
                 terminal.appendChild(line);
                 buildLine();
+                scrollToBottom();
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
             } else if (e.key === 'Backspace') {
@@ -279,6 +280,10 @@
                 input.textContent = input.textContent.slice(0, -1);
             }
         });
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
 
         function isMobileDevice() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
