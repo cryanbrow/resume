@@ -69,34 +69,40 @@ let resumeJson = {
             "name": "container_orchestration",
             "skillLevel": "expert",
             "highlight": false,
+            "header": true,
             "subSkills": [
                 {
                     "name": "kubernetes",
                     "skillLevel": "expert",
                     "highlight": false,
+                    "header": true,
                     "subSkills": [
                         {
                             "name": "PKS/TKGI/TKGS/TKG2",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                         {
                             "name": "AKS/GKE",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                         {
                             "name": "k3s/microK8s/minikube",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                         {
                             "name": "helm/kustomize",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                     ]
@@ -105,34 +111,40 @@ let resumeJson = {
                     "name": "container_distribution",
                     "skillLevel": "expert",
                     "highlight": false,
+                    "header": true,
                     "subSkills": [
                         {
                             "name": "docker",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": true,
                             "subSkills": [
                                 {
                                     "name": "docker",
                                     "skillLevel": "expert",
                                     "highlight": false,
+                                    "header": false,
                                     "subSkills": []
                                 },
                                 {
                                     "name": "podman",
                                     "skillLevel": "expert",
                                     "highlight": false,
+                                    "header": false,
                                     "subSkills": []
                                 },
                                 {
                                     "name": "jib",
                                     "skillLevel": "expert",
                                     "highlight": false,
+                                    "header": false,
                                     "subSkills": []
                                 },
                                 {
                                     "name": "harbor",
                                     "skillLevel": "expert",
                                     "highlight": false,
+                                    "header": false,
                                     "subSkills": []
                                 },
                             ]
@@ -141,18 +153,21 @@ let resumeJson = {
                             "name": "podman",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                         {
                             "name": "jib",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                         {
                             "name": "harbor",
                             "skillLevel": "expert",
                             "highlight": false,
+                            "header": false,
                             "subSkills": []
                         },
                     ]
@@ -269,7 +284,7 @@ function handleResumeCommand(command) {
                     returnString += skills;
                     break;
                 case resumeCommand.includes("skills"):
-                    buildSkillsLines(resumeJson.skills, 0);
+                    buildTree(resumeJson.skills);
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
@@ -295,21 +310,19 @@ function handleResumeCommand(command) {
     return returnString;
 }
 
-function buildSkillsLines(inputSkills, depth) {
-    for (var i = 0; i < inputSkills.length; i++) {
-        var output = "";
-        if (depth === 0) {
-            output += ".";
+function buildTree(inputSkills) {
+    const counts = { headers: 0, skills: 0 };
+    inputSkills.forEach((skill, index, skills) => {
+      if (skill.name.charAt(0) != ".") {
+        const parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
+        console.log(`${prefix}${parts[0]}${skill.name}`);
+  
+        if (skill.header) {
+          counts.headers += 1;
+          buildTree(skill.subSkills);
         } else {
-            for (var j = 0; j < depth; j++) {
-                output += "──";
-            }
+          counts.skills += 1;
         }
-        output += inputSkills[i].name + " : " + inputSkills[i].skillLevel;
-        console.log(output);
-        if (inputSkills[i].subSkills.length > 0) {
-            console.log(inputSkills[i].subSkills);
-            buildSkillsLines(inputSkills[i].subSkills, depth + 1);
-        }
-    }
-}
+      }
+    });
+  }
