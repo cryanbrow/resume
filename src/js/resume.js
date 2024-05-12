@@ -315,7 +315,12 @@ function buildSkillTree(inputSkills, prefix) {
     var parts = [];
     inputSkills.forEach((skill, index, skills) => {
         if (skill.name.charAt(0) == ".") {
-            console.log(`${prefix}${skill.name}`);
+            if (prefix) {
+                console.log(`${prefix}${skill.name}`);
+            } else {
+                console.log(`${skill.name}`);
+            }
+            
             parts[index] = "";
         }
         else {
@@ -325,7 +330,12 @@ function buildSkillTree(inputSkills, prefix) {
 
         if (skill.header) {
             counts.headerCount += 1;
-            buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
+            if (prefix) {
+                buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
+            } else {
+                buildSkillTree(skill.subSkills, `${parts[1]}`);
+            }
+            
         } else {
             counts.skillCount += 1;
         }
