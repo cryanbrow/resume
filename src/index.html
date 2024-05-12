@@ -275,6 +275,7 @@
                 scrollToBottom();
             } else if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
                 input.textContent += "^C";
+                cursor.remove();
                 buildLine();
                 scrollToBottom();
             } else if (e.key.length === 1) {
