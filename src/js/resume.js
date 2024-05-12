@@ -319,7 +319,7 @@ function buildSkillTree(inputSkills) {
   
         if (skill.header) {
           counts.headers += 1;
-          buildTree(skill.subSkills);
+          buildSkillTree(skill.subSkills);
         } else {
           counts.skills += 1;
         }
