@@ -284,7 +284,7 @@ function handleResumeCommand(command) {
                     returnString += skills;
                     break;
                 case resumeCommand.includes("skills"):
-                    buildSkillTree(resumeJson.skills, " ");
+                    buildSkillTree(resumeJson.skills, "");
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
@@ -316,14 +316,14 @@ function buildSkillTree(inputSkills, prefix) {
     inputSkills.forEach((skill, index, skills) => {
         if (skill.name.charAt(0) == ".") {
             console.log(`${skill.name}`);
-            parts[index] = "";
+            parts = ["",""];
         }
         else {
             parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
             console.log(prefix + parts[0] + skill.name);
         }
 
-        if (skill.header) {
+        if (skill.subSkills.length > 0) {
             counts.headerCount += 1;
             buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
         } else {
