@@ -9,7 +9,7 @@ let resumeJson = {
         "phoneNumber": "870-754-2665",
         "email": "cryan.brow@gmail.com"
     },
-    "education" : [],
+    "education": [],
     "certifications": [
         {
             "name": "Certified Kubernetes Application Developer (CKAD)",
@@ -47,7 +47,7 @@ let resumeJson = {
             "awardMonth": "Aug",
             "description": "The Five Star Award is the highest honor at FedEx. It recognizes team members who have enhanced service and profitability and exemplified the spirit of teamwork. This award is given annually, and managers nominate their team members for this prestigious recognition.",
             "recognition": "Awarded for adoption of Cassandra, Kafka, Spring Boot, and other technologies, paving the way for RFID."
-        },{
+        }, {
             "issuer": "FedEx",
             "name": "Global Opco Technologies Excellence Award",
             "awardYear": "2021",
@@ -110,7 +110,32 @@ let resumeJson = {
                             "name": "docker",
                             "skillLevel": "expert",
                             "highlight": false,
-                            "subSkills": []
+                            "subSkills": [
+                                {
+                                    "name": "docker",
+                                    "skillLevel": "expert",
+                                    "highlight": false,
+                                    "subSkills": []
+                                },
+                                {
+                                    "name": "podman",
+                                    "skillLevel": "expert",
+                                    "highlight": false,
+                                    "subSkills": []
+                                },
+                                {
+                                    "name": "jib",
+                                    "skillLevel": "expert",
+                                    "highlight": false,
+                                    "subSkills": []
+                                },
+                                {
+                                    "name": "harbor",
+                                    "skillLevel": "expert",
+                                    "highlight": false,
+                                    "subSkills": []
+                                },
+                            ]
                         },
                         {
                             "name": "podman",
@@ -244,6 +269,7 @@ function handleResumeCommand(command) {
                     returnString += skills;
                     break;
                 case resumeCommand.includes("skills"):
+                    buildSkillsLines(resumeJson.skills);
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
@@ -267,4 +293,13 @@ function handleResumeCommand(command) {
         }
     }
     return returnString;
+}
+
+function buildSkillsLines(inputSkills) {
+    inputSkills.forEach(skill => {
+        console.log(skill.name + ":" + skill.skillLevel);
+        if (skill.subSkills.length > 0) {
+            buildSkillsLines(skill.subSkills);
+        }
+    });
 }
