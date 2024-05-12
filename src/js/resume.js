@@ -311,17 +311,17 @@ function handleResumeCommand(command) {
 }
 
 function buildSkillTree(inputSkills, prefix) {
-    const counts = { headers: 0, skills: 0 };
+    const counts = { headerCount: 0, skillCount: 0 };
     inputSkills.forEach((skill, index, skills) => {
       if (skill.name.charAt(0) != ".") {
         const parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
         console.log(`${prefix}${parts[0]}${skill.name}`);
   
         if (skill.header) {
-          counts.headers += 1;
+          counts.headerCount += 1;
           buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
         } else {
-          counts.skills += 1;
+          counts.skillCount += 1;
         }
       }
     });
