@@ -273,11 +273,16 @@
                 terminal.appendChild(line);
                 buildLine();
                 scrollToBottom();
-            } else if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
-                input.textContent += "^C";
-                cursor.remove();
-                buildLine();
-                scrollToBottom();
+            } else if (e.ctrlKey) {
+
+                if (e.key === 'c' || e.key === 'C') {
+                    input.textContent += "^C";
+                    cursor.remove();
+                    buildLine();
+                    scrollToBottom();
+                } else if (e.key === 'l' || e.key === 'L') {
+                    removeChildrenWithId(terminal);
+                }
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
             } else if (e.key === 'Backspace') {
