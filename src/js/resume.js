@@ -301,7 +301,7 @@ function buildSkillsLines(inputSkills, depth) {
         if (depth === 0) {
             output += ".";
         } else {
-            for (var j = 0; j < depth; i++) {
+            for (var j = 0; j < depth; j++) {
                 output += "──";
             }
         }
