@@ -308,7 +308,7 @@ function buildSkillsLines(inputSkills, depth) {
         output += inputSkills[i].name + " : " + inputSkills[i].skillLevel;
         console.log(output);
         if (inputSkills[i].subSkills.length > 0) {
-            buildSkillsLines(skill.subSkills, depth + 1);
+            buildSkillsLines(inputSkills[i].subSkills, depth + 1);
         }
     }
 }
