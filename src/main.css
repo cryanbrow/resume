@@ -1,0 +1,28 @@
+body {
+    background-color: #000;
+    color: #0F0;
+    font-family: monospace;
+}
+
+#outer-div {
+    white-space: pre;
+    overflow-wrap: normal;
+    width: 100%;
+    height: 95vh;
+}
+
+#cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        color: transparent
+    }
+
+    50% {
+        color: #0F0;
+    }
+}
