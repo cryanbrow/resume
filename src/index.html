@@ -153,7 +153,7 @@
         function processCommand(result) {
             returnString = '';
             if (result == 'clear') {
-                removeChildrenWithId(terminal)
+                removeChildrenWithId(terminal);
             } else if (result.startsWith('resume')){
                 returnString += handleResumeCommand(result);
                 returnString += '\n';
@@ -276,12 +276,15 @@
             } else if (e.ctrlKey) {
 
                 if (e.key === 'c' || e.key === 'C') {
+                    e.preventDefault();
                     input.textContent += "^C";
                     cursor.remove();
                     buildLine();
                     scrollToBottom();
                 } else if (e.key === 'l' || e.key === 'L') {
+                    e.preventDefault();
                     removeChildrenWithId(terminal);
+                    buildLine();
                 }
             } else if (e.key.length === 1) {
                 input.textContent += e.key;
