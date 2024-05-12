@@ -320,7 +320,6 @@ function buildSkillTree(inputSkills, prefix) {
             } else {
                 console.log(`${skill.name}`);
             }
-            
             parts[index] = "";
         }
         else {
