@@ -314,29 +314,24 @@ function buildSkillTree(inputSkills, prefix) {
     const counts = { headerCount: 0, skillCount: 0 };
     var parts = [];
     inputSkills.forEach((skill, index, skills) => {
+        var output = "";
         if (skill.name.charAt(0) == ".") {
-            if (prefix != undefined) {
-                console.log(`${prefix}${skill.name}`);
-            } else {
-                console.log(`${skill.name}`);
-            }
+            output += prefix + skill.name;
+            //console.log(`${prefix}${skill.name}`);
             parts[index] = "";
         }
         else {
             parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
             console.log(prefix + parts[0] + skill.name); 
+            output += prefix + skill.name;
         }
 
         if (skill.header) {
             counts.headerCount += 1;
-            if (prefix != undefined) {
-                buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
-            } else {
-                buildSkillTree(skill.subSkills, `${parts[1]}`);
-            }
-            
+                buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);            
         } else {
             counts.skillCount += 1;
         }
+        console.log(output);
     });
 }
