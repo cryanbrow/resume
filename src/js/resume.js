@@ -269,7 +269,7 @@ function handleResumeCommand(command) {
                     returnString += skills;
                     break;
                 case resumeCommand.includes("skills"):
-                    buildSkillsLines(resumeJson.skills);
+                    buildSkillsLines(resumeJson.skills, 0);
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
@@ -295,11 +295,20 @@ function handleResumeCommand(command) {
     return returnString;
 }
 
-function buildSkillsLines(inputSkills) {
-    inputSkills.forEach(skill => {
-        console.log(skill.name + ":" + skill.skillLevel);
-        if (skill.subSkills.length > 0) {
-            buildSkillsLines(skill.subSkills);
+function buildSkillsLines(inputSkills, depth) {
+    for (var i = 0; i < inputSkills.length; i++) {
+        var output = "";
+        if (depth === 0) {
+            output += ".";
+        } else {
+            for (var j = 0; j < depth; i++) {
+                output += "──";
+            }
         }
-    });
+        output += inputSkills[i].name + " : " + inputSkills[i].skillLevel;
+        console.log(output);
+        if (inputSkills[i].subSkills.length > 0) {
+            buildSkillsLines(skill.subSkills, depth + 1);
+        }
+    }
 }
