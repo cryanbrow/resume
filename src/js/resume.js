@@ -66,7 +66,7 @@ let resumeJson = {
     ],
     "skills": [
         {
-            "name": "container_orchestration",
+            "name": ".container_orchestration",
             "skillLevel": "expert",
             "highlight": false,
             "header": true,
@@ -284,7 +284,7 @@ function handleResumeCommand(command) {
                     returnString += skills;
                     break;
                 case resumeCommand.includes("skills"):
-                    buildSkillTree(resumeJson.skills);
+                    buildSkillTree(resumeJson.skills, "");
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
@@ -310,16 +310,16 @@ function handleResumeCommand(command) {
     return returnString;
 }
 
-function buildSkillTree(inputSkills) {
+function buildSkillTree(inputSkills, prefix) {
     const counts = { headers: 0, skills: 0 };
     inputSkills.forEach((skill, index, skills) => {
       if (skill.name.charAt(0) != ".") {
         const parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
-        console.log(`${parts[0]}${skill.name}`);
+        console.log(`${prefix}${parts[0]}${skill.name}`);
   
         if (skill.header) {
           counts.headers += 1;
-          buildSkillTree(skill.subSkills);
+          buildSkillTree(skill.subSkills, `${prefix}${parts[1]}`);
         } else {
           counts.skills += 1;
         }
