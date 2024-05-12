@@ -180,17 +180,71 @@ let directoryStructure = {
 
 let resumeJson = {
     "contact": {
-        "first-name": "Bryan",
-        "middle-name": "Matthew",
-        "last-name": "Crow",
-        "linkedin-url": "linkedin.com/in/bryan-crow",
-        "github-url": "github.com/cryanbrow",
-        "website-url": "bryan-crow.com",
-        "phone-number": "870-754-2665",
+        "firstName": "Bryan",
+        "middleName": "Matthew",
+        "lastName": "Crow",
+        "linkedinUrl": "linkedin.com/in/bryan-crow",
+        "githubUrl": "github.com/cryanbrow",
+        "websiteUrl": "bryan-crow.com",
+        "phoneNumber": "870-754-2665",
         "email": "cryan.brow@gmail.com"
     },
     "education" : [],
-    "certifications": [],
+    "certifications": [
+        {
+            "name": "Certified Kubernetes Application Developer (CKAD)",
+            "issuer": "Cloud Native Computing Foundation (CNCF)",
+            "issueYear": "2023",
+            "issueMonth": "Jan",
+            "expires": true,
+            "expirationYear": "2026",
+            "expirationMonth": "Jan"
+        },
+        {
+            "name": "Professional To Leader Graduate",
+            "issuer": "FedEx",
+            "issueYear": "2018",
+            "issueMonth": "Nov",
+            "expires": false,
+            "expirationYear": "",
+            "expirationMonth": ""
+        },
+        {
+            "name": "Dale Carnegie Course",
+            "issuer": "Dale Carnegie & Associates Inc",
+            "issueYear": "2015",
+            "issueMonth": "Nov",
+            "expires": false,
+            "expirationYear": "",
+            "expirationMonth": ""
+        },
+    ],
+    "awards": [
+        {
+            "issuer": "FedEx",
+            "name": "Five Star Award",
+            "awardYear": "",
+            "awardMonth": "",
+            "description": "",
+            "recognition": ""
+        },
+        {
+            "issuer": "FedEx",
+            "name": "Luminary Award",
+            "awardYear": "",
+            "awardMonth": "",
+            "description": "",
+            "recognition": ""
+        },
+        {
+            "issuer": "FedEx",
+            "name": "GOT Award",
+            "awardYear": "",
+            "awardMonth": "",
+            "description": "",
+            "recognition": ""
+        }
+    ],
     "skills": [],
     "introduction": "Lead Technical Developer with greater than ten years of leadership experience in process and technical change. Experienced in training and advancing teams in adoption of modern coding, design, and pairing practices. Successfully implemented large scale, data intensive, IOT implementations for large automation projects.",
     "keywords": [
@@ -203,11 +257,11 @@ let resumeJson = {
         {
             "employer": "FedEx",
             "title": "Chief Engineering Specialist Principal",
-            "start-year": "2022",
-            "start-month": "09",
-            "end-year": "",
-            "end-month": "",
-            "active-role": true,
+            "startYear": "2022",
+            "startMonth": "09",
+            "endYear": "",
+            "endMonth": "",
+            "activeRole": true,
             "achievements": [
                 "Rolled out dimensioning in motion software to 150+ service centers",
                 "Resulted in 25 million dollars in recovered revenue per quarter",
@@ -218,11 +272,11 @@ let resumeJson = {
         {
             "employer": "FedEx",
             "title": "Software Developer Advisor",
-            "start-year": "2018",
-            "start-month": "12",
-            "end-year": "2022",
-            "end-month": "08",
-            "active-role": false,
+            "startYear": "2018",
+            "startMonth": "12",
+            "endYear": "2022",
+            "endMonth": "08",
+            "activeRole": false,
             "achievements": [
                 "Implemented anedge security solution with trenching capabilities",
                 "Pioneered Kubernetes adoption in production for FedEx",
@@ -233,11 +287,11 @@ let resumeJson = {
         {
             "employer": "FedEx",
             "title": "Senior Programmer Analyst",
-            "start-year": "2016",
-            "start-month": "08",
-            "end-year": "2018",
-            "end-month": "12",
-            "active-role": false,
+            "startYear": "2016",
+            "startMonth": "08",
+            "endYear": "2018",
+            "endMonth": "12",
+            "activeRole": false,
             "achievements": [
                 "Established Kafka and Cassandra implementation at FedEx",
                 "Created visualizer to display location of shipments and forklifts"
@@ -247,44 +301,44 @@ let resumeJson = {
         {
             "employer": "FedEx",
             "title": "Programmer Analyst",
-            "start-year": "2013",
-            "start-month": "11",
-            "end-year": "2018",
-            "end-month": "08",
-            "active-role": false,
+            "startYear": "2013",
+            "startMonth": "11",
+            "endYear": "2018",
+            "endMonth": "08",
+            "activeRole": false,
             "achievements": [],
             "description": "Advocated for and implemented the first REST services at FedEx Freight and the first single page Angular application at Freight. Allowing for adoption of Agile and microservice technologies."
         },
         {
             "employer": "FedEx",
             "title": "Associate Programmer Analyst",
-            "start-year": "2012",
-            "start-month": "06",
-            "end-year": "2013",
-            "end-month": "11",
-            "active-role": false,
+            "startYear": "2012",
+            "startMonth": "06",
+            "endYear": "2013",
+            "endMonth": "11",
+            "activeRole": false,
             "achievements": [],
             "description": "Built software for syncing and reconciling Freight customer data and to reduce data inconsistency and improve customer experience between Freight and Enterprise customer systems."
         },
         {
             "employer": "FedEx",
             "title": "Lead Computer Operator",
-            "start-year": "2011",
-            "start-month": "05",
-            "end-year": "2012",
-            "end-month": "06",
-            "active-role": false,
+            "startYear": "2011",
+            "startMonth": "05",
+            "endYear": "2012",
+            "endMonth": "06",
+            "activeRole": false,
             "achievements": [],
             "description": "Shift lead responsible for activities within a data center including production installs, monitoring, alerting, and resolving issues. Built Java software for tracking, recovery, and long storage of offsite backup media."
         },
         {
             "employer": "FedEx",
             "title": "Software Developer Advisor",
-            "start-year": "2007",
-            "start-month": "04",
-            "end-year": "2011",
-            "end-month": "05",
-            "active-role": false,
+            "startYear": "2007",
+            "startMonth": "04",
+            "endYear": "2011",
+            "endMonth": "05",
+            "activeRole": false,
             "achievements": [],
             "description": "Responsible for monitoring, alerting, and resolving issues with servers, networking equipment, mainframe processes, and other data center centric activites."
         }

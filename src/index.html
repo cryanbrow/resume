@@ -278,8 +278,10 @@
             } else if (e.key === 'Backspace') {
                 e.preventDefault();
                 input.textContent = input.textContent.slice(0, -1);
-            } else if (e.key.length === 2) {
-                e.key.forEach(singleKey => {console.log(singleKey)});
+            } else if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) {
+                input.textContent += "^C";
+                buildLine();
+                scrollToBottom();
             }
         });
 
