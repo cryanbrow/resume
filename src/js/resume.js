@@ -233,3 +233,38 @@ let resumeJson = {
         }
     ]
 }
+
+function handleResumeCommand(command) {
+    var returnString = '';
+    if (command.startsWith('resume')) {
+        var resumeCommand = command.replace('resume', '').trim();
+        if (resumeCommand) {
+            switch (true) {
+                case resumeCommand.includes("--"):
+                    returnString += skills;
+                    break;
+                case resumeCommand.includes("skills"):
+                    skills.forEach(skill => {
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = skill;
+                        terminal.appendChild(line);
+                    });
+                    break;
+                case resumeCommand.includes("experience"):
+                    experience.forEach(exper => {
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = exper;
+                        terminal.appendChild(line);
+                    });
+                    break;
+                default:
+                    returnString += 'invalid resume command';
+            }
+        } else {
+            returnString += "everything resume"
+        }
+    }
+    return returnString;
+}
