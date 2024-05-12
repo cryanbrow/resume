@@ -320,7 +320,7 @@ function buildSkillTree(inputSkills, prefix) {
         }
         else {
             parts = index == skills.length - 1 ? ["└── ", "    "] : ["├── ", "│   "];
-            console.log(`${prefix}${parts[0]}${skill.name}`);   
+            console.log(prefix + parts[0] + skill.name); 
         }
 
         if (skill.header) {
