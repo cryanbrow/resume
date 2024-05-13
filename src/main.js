@@ -282,7 +282,7 @@ function createMOTD() {
         '|site|* GitHub ~https://github.com/cryanbrow',
         '  ',
         'This is an interactive resume. To get started, enter help to get available commands',
-        'or enter experience, about, or projects to get started.',
+        'or enter `resume experience`, `resume skills`, or just `resume` to print everything.',
         '  ',
         'All files supporting this are in the pwd, use ls and cat to read files directly.',
         '  ']
