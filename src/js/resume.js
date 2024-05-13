@@ -280,17 +280,39 @@ function handleResumeCommand(command) {
         var resumeCommand = command.replace('resume', '').trim();
         if (resumeCommand) {
             switch (true) {
-                case resumeCommand.includes("--"):
-                    returnString += skills;
-                    break;
                 case resumeCommand.includes("skills"):
-                    buildSkillTree(resumeJson.skills, "");
                     skills.forEach(skill => {
                         line = document.createElement('div');
                         line.id = 'line';
                         line.textContent = skill;
                         terminal.appendChild(line);
                     });
+                    break;
+                    case resumeCommand.includes("award"):
+                        awards.forEach(award => {
+                            line = document.createElement('div');
+                            line.id = 'line';
+                            line.textContent = award;
+                            terminal.appendChild(line);
+                        });
+                        break;
+                case resumeCommand.includes("keywords"):
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    line.textContent = keywords;
+                    terminal.appendChild(line);
+                    break;
+                case resumeCommand.includes("introduction"):
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    line.textContent = introduction;
+                    terminal.appendChild(line);
+                    break;
+                case resumeCommand.includes("divider"):
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    line.textContent = divider;
+                    terminal.appendChild(line);
                     break;
                 case resumeCommand.includes("experience"):
                     experience.forEach(exper => {
