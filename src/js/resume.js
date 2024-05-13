@@ -349,7 +349,7 @@ function handleResumeCommand(command) {
                     returnString += 'invalid resume command';
             }
         } else {
-            returnString += "everything resume"
+            printEntireResume();
         }
     }
     return returnString;
