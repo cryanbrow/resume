@@ -146,6 +146,35 @@ let blankLine = "                                                               
 
 let contact_information = ["                            cryan.brow@gmail.com | 870-754-2665 | github.com/cryanbrow | linkedin.com/in/bryan-crow                            "];
 
+let help = [
+    "resume can be used to print information about Bryan Crow",
+    " ",
+    "Main Commands:",
+    "  resume               Prints out the entirety of the resume in preferred order",
+    "  resume experience    Lists work experience in chronological order",
+    "  resume skills        Lists skills in tree format",
+    "  resume certificates  Presents certificates",
+    "  resume awards        Displays awards",
+    " ",
+    "Additional Commands:",
+    "  resume name          Displays name in ASCII art",
+    "  resume divider       Outputs a divider",
+    "  resume contact       Shows contact information",
+    "  resume introduction  Introduction about me",
+    "  resume keywords      Keywords describing me",
+    " ",
+    "Work In Progress",
+    "  clear (ctrl+l)       Clears the display",
+    "  cancel (ctrl+c)      Clears current input",
+    "  pwd                  Present Working Directory",
+    "  cd                   Change Directory",
+    "  cat <file>           Displays contents of selected file",
+    "  motd                 Message of the Day",
+    "  whoami               Current users name",
+    "  ls                   List contents of current directory",
+    " ",
+]
+
 var terminal = document.getElementById('terminal');
 
 createMOTD();
@@ -187,6 +216,8 @@ function processCommand(result) {
     returnString = '';
     if (result == 'clear') {
         removeChildrenWithId(terminal);
+    } else if (result.startsWith('help')) {
+        handleHelp();
     } else if (result.startsWith('resume')) {
         returnString += handleResumeCommand(result);
         returnString += '\n';
@@ -215,6 +246,15 @@ function handleCd(inputString) {
 
 function handleCatInput(inputString) {
     return 'You certainly tried to cat something.';
+}
+
+function handleHelp() {
+    help.forEach(hhelp => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = hhelp;
+        terminal.appendChild(line);
+    });
 }
 
 function splitInput(inputString, splitString) {

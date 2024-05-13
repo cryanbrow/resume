@@ -287,6 +287,7 @@ function handleResumeCommand(command) {
                         line.textContent = art;
                         terminal.appendChild(line);
                     });
+                    break;
                 case resumeCommand.includes("skills"):
                     skills.forEach(skill => {
                         line = document.createElement('div');
