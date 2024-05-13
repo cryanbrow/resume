@@ -1,8 +1,8 @@
 let nameArt = [
 "                                                ___ _____   ___   _  _    ___ ___  _____      __                                               ",
-"                                               | _ ) _ \ \ / /_\ | \| |  / __| _ \/ _ \ \    / /                                               ",
-"                                               | _ \   /\ V / _ \| .` | | (__|   / (_) \ \/\/ /                                                ",
-"                                               |___/_|_\ |_/_/ \_\_|\_|  \___|_|_\\___/ \_/\_/                                                 ",
+"                                               | _ ) _ \\ \\ / /_\\ | \\| |  / __| _ \\/ _ \\ \\    / /                                               ",
+"                                               | _ \   /\\ V / _ \\| .` | | (__|   / (_) \\ \\/\\/ /                                                ",
+"                                               |___/_|_\\ |_/_/ \\_\\_|\\_|  \___|_|_\\\\___/ \\_/\\_/                                                 ",
 ]
 
 let skills = [
@@ -78,7 +78,7 @@ let experience = [
 
 let awards = [
     "//Awards",
-    "",
+    " ",
     "{\"awards\": [",
     "    {",
     "        \"issuer\": \"FedEx\",",
@@ -116,7 +116,7 @@ let keywords = ["                                Software Developer && Software 
 
 let certifications = [
     "//Certifications",
-    "",
+    " ",
     "certifications:",
     "  - name: Certified Kubernetes Application Developer (CKAD)",
     "    issuer: Cloud Native Computing Foundation (CNCF)",
@@ -139,8 +139,10 @@ let certifications = [
     "    expires: false",
     "    expirationYear: ''",
     "    expirationMonth: ''",
-    "",
+    " ",
 ];
+
+let blankLine = "                                                                                                                                                ";
 
 let contact_information = ["                            cryan.brow@gmail.com | 870-754-2665 | github.com/cryanbrow | linkedin.com/in/bryan-crow                            "];
 

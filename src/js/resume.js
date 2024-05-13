@@ -366,6 +366,7 @@ function printEntireResume(){
     //Blank Line
     line = document.createElement('div');
     line.id = 'line';
+    line.textContent = blankLine;
     terminal.appendChild(line);
     //Contact Information
     line = document.createElement('div');
@@ -385,6 +386,7 @@ function printEntireResume(){
     //Blank Line
     line = document.createElement('div');
     line.id = 'line';
+    line.textContent = blankLine;
     terminal.appendChild(line);
     //Intoduction
     introduction.forEach(intro => {
