@@ -163,7 +163,7 @@ let help = [
     "  resume introduction  Introduction about me",
     "  resume keywords      Keywords describing me",
     " ",
-    "Work In Progress",
+    "Work In Progress:",
     "  clear (ctrl+l)       Clears the display",
     "  cancel (ctrl+c)      Clears current input",
     "  pwd                  Present Working Directory",
