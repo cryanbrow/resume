@@ -280,6 +280,13 @@ function handleResumeCommand(command) {
         var resumeCommand = command.replace('resume', '').trim();
         if (resumeCommand) {
             switch (true) {
+                case resumeCommand.includes("name"):
+                    nameArt.forEach(art =>{
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = art;
+                        terminal.appendChild(line);
+                    });
                 case resumeCommand.includes("skills"):
                     skills.forEach(skill => {
                         line = document.createElement('div');
@@ -288,14 +295,22 @@ function handleResumeCommand(command) {
                         terminal.appendChild(line);
                     });
                     break;
-                    case resumeCommand.includes("award"):
-                        awards.forEach(award => {
-                            line = document.createElement('div');
-                            line.id = 'line';
-                            line.textContent = award;
-                            terminal.appendChild(line);
-                        });
-                        break;
+                case resumeCommand.includes("award"):
+                    awards.forEach(award => {
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = award;
+                        terminal.appendChild(line);
+                    });
+                    break;
+                case resumeCommand.includes("cert"):
+                    certifications.forEach(cert => {
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = cert;
+                        terminal.appendChild(line);
+                    });
+                    break;
                 case resumeCommand.includes("keywords"):
                     line = document.createElement('div');
                     line.id = 'line';
@@ -303,15 +318,23 @@ function handleResumeCommand(command) {
                     terminal.appendChild(line);
                     break;
                 case resumeCommand.includes("introduction"):
-                    line = document.createElement('div');
-                    line.id = 'line';
-                    line.textContent = introduction;
-                    terminal.appendChild(line);
+                    introduction.forEach(intro => {
+                        line = document.createElement('div');
+                        line.id = 'line';
+                        line.textContent = intro;
+                        terminal.appendChild(line);
+                    });
                     break;
                 case resumeCommand.includes("divider"):
                     line = document.createElement('div');
                     line.id = 'line';
                     line.textContent = divider;
+                    terminal.appendChild(line);
+                    break;
+                case resumeCommand.includes("contact"):
+                    line = document.createElement('div');
+                    line.id = 'line';
+                    line.textContent = contact_information;
                     terminal.appendChild(line);
                     break;
                 case resumeCommand.includes("experience"):
@@ -330,6 +353,76 @@ function handleResumeCommand(command) {
         }
     }
     return returnString;
+}
+
+function printEntireResume(){
+    //Name art
+    nameArt.forEach(art =>{
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = art;
+        terminal.appendChild(line);
+    });
+    //Blank Line
+    line = document.createElement('div');
+    line.id = 'line';
+    terminal.appendChild(line);
+    //Contact Information
+    line = document.createElement('div');
+    line.id = 'line';
+    line.textContent = contact_information;
+    terminal.appendChild(line);
+    //Keywords
+    line = document.createElement('div');
+    line.id = 'line';
+    line.textContent = keywords;
+    terminal.appendChild(line);
+    //Divider
+    line = document.createElement('div');
+    line.id = 'line';
+    line.textContent = divider;
+    terminal.appendChild(line);
+    //Blank Line
+    line = document.createElement('div');
+    line.id = 'line';
+    terminal.appendChild(line);
+    //Intoduction
+    introduction.forEach(intro => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = intro;
+        terminal.appendChild(line);
+    });
+    //Work Experience
+    experience.forEach(exper => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = exper;
+        terminal.appendChild(line);
+    });
+    //Skills
+    skills.forEach(skill => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = skill;
+        terminal.appendChild(line);
+    });
+    //Certifications
+    certifications.forEach(cert => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = cert;
+        terminal.appendChild(line);
+    });
+    //Awards
+    awards.forEach(award => {
+        line = document.createElement('div');
+        line.id = 'line';
+        line.textContent = award;
+        terminal.appendChild(line);
+    });
+    //Projects
+    //TODO
 }
 
 function buildSkillTree(inputSkills, prefix) {

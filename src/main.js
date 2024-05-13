@@ -1,37 +1,41 @@
-let skills = ["************************************************************************************************************************************************",
-    "*                                                                    Skills                                                                    *",
-    "************************************************************************************************************************************************",
+let nameArt = [
+"                                                ___ _____   ___   _  _    ___ ___  _____      __                                               ",
+"                                               | _ ) _ \ \ / /_\ | \| |  / __| _ \/ _ \ \    / /                                               ",
+"                                               | _ \   /\ V / _ \| .` | | (__|   / (_) \ \/\/ /                                                ",
+"                                               |___/_|_\ |_/_/ \_\_|\_|  \___|_|_\\___/ \_/\_/                                                 ",
+]
+
+let skills = [
+    "                                                                                                                                                ",
     "//Skills                                                                                                                                        ",
     "                                                                                                                                                ",
     ".container_orchestration            .programming                        .data_analysis                      .dev_ops                            ",
     "├──kuberenetes                      ├──languages                        ├──machine_learning                 ├──CI                               ",
     "│   ├──PKS/TKGI/TKGS/TKG2           │   ├──java                         │   ├──tensorflow                   │   ├──jenkins                      ",
     "│   ├──AKS/GKE                      │   ├──python                       │   ├──keras                        │   ├──github_actions               ",
-    "│   ├──k3s/microK8s/minikube        │   ├──golang                       │   ├──opencv                       │   ├──travis_ci                    ",
-    "│   └──helm/kustomize               │   ├──js                           │   ├──pytorch                      │   └──concourse                    ",
-    "└──container_distribution           │   └──ts                           │   ├──azure_ml_studio              └──source_control                   ",
-    "    ├──docker                       └──frameworks                       │   └──scikit_learn                     ├──git                          ",
-    "    ├──podman                           ├──spring/spring_boot           └──data_preparation                     └──svn                          ",
-    "    ├──jib                              ├──angular                         ├──ml_data_cleaning                                                  ",
-    "    └──harbor                           ├──vue                             ├──outlier_removal               .monitoring                         ",
-    "                                        ├──ionic                           └──statistical_modeling          ├──prometheus                       ",
-    ".database_technologies                  ├──electron                                                         ├──alert_manager                    ",
-    "├──oracle                               ├──react                        .mobile_development                 ├──appdynamics                      ",
-    "├──cassandra/datastax                   └──wails                        ├──native_android                   ├──loki                             ",
-    "├──redis                                                                ├──ionic                            ├──pagerduty                        ",
-    "├──h2                               .protocols                          └──react_native                     ├──splunk                           ",
-    "└──mongodb                          ├──REST/SOAP/graphql                                                    ├──grafana                          ",
-    "                                    ├──RPC                              .methodologies                      └──ELK                              ",
-    ".project_management                 ├──MQTT                             ├──paired_programming                                                   ",
+    "│   ├──k3s/microK8s/minikube        │   ├──golang                       │   ├──opencv                       │   ├──terraform                    ",
+    "│   └──helm/kustomize               │   ├──js                           │   ├──pytorch                      │   ├──travis_ci                    ",
+    "└──container_distribution           │   └──ts                           │   ├──azure_ml_studio              │   └──concourse                    ",
+    "    ├──docker                       └──frameworks                       │   └──scikit_learn                 └──source_control                   ",
+    "    ├──podman                           ├──spring/spring_boot           └──data_preparation                     ├──git                          ",
+    "    ├──jib                              ├──angular                         ├──ml_data_cleaning                  └──svn                          ",
+    "    └──harbor                           ├──vue                             ├──outlier_removal                                                   ",
+    "                                        ├──ionic                           └──statistical_modeling          .monitoring                         ",
+    ".database_technologies                  ├──electron                                                         ├──prometheus                       ",
+    "├──oracle                               ├──react                        .mobile_development                 ├──alert_manager                    ",
+    "├──cassandra/datastax                   └──wails                        ├──native_android                   ├──appdynamics                      ",
+    "├──redis                                                                ├──ionic                            ├──loki                             ",
+    "├──h2                               .protocols                          └──react_native                     ├──pagerduty                        ",
+    "└──mongodb                          ├──REST/SOAP/graphql                                                    ├──splunk                           ",
+    "                                    ├──RPC                              .methodologies                      ├──grafana                          ",
+    ".project_management                 ├──MQTT                             ├──paired_programming               └──ELK                              ",
     "├──agile                            ├──JMS                              ├──BDD                                                                  ",
     "├──SAFE                             └──Kafka                            └──TDD                                                                  ",
     "├──scrum                                                                                                                                        ",
     "└──kanban                                                                                                                                       ",
     "                                                                                                                                                "];
 
-let experience = ["************************************************************************************************************************************************",
-    "*                                                                  Experience                                                                  *",
-    "************************************************************************************************************************************************",
+let experience = [
     "                                                                                                                                                ",
     "//Experience                                                                                                                                    ",
     "                                                                                                                                                ",
@@ -73,6 +77,8 @@ let experience = ["*************************************************************
     "                                                                     |    |                                                                     ",];
 
 let awards = [
+    "//Awards",
+    "",
     "{\"awards\": [",
     "    {",
     "        \"issuer\": \"FedEx\",",
@@ -103,14 +109,40 @@ let awards = [
 let divider = "≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡";
 
 let introduction = ["/** Lead Technical Developer with greater than ten years of leadership experience in process and technical change. Experienced in training and",
- "advancing teams in adoption of modern coding, design, and pairing practices. Successfully implemented large scale, data intensive, IOT",
-  "implementations for large automation projects. **/"];
+    "advancing teams in adoption of modern coding, design, and pairing practices. Successfully implemented large scale, data intensive, IOT",
+    "implementations for large automation projects. **/"];
 
 let keywords = ["                                Software Developer && Software Architect && IOT Developer && Kubernetes Engineer                                "];
 
-let certifications = [];
+let certifications = [
+    "//Certifications",
+    "",
+    "certifications:",
+    "  - name: Certified Kubernetes Application Developer (CKAD)",
+    "    issuer: Cloud Native Computing Foundation (CNCF)",
+    "    issueYear: '2023'",
+    "    issueMonth: Jan",
+    "    expires: true",
+    "    expirationYear: '2026'",
+    "    expirationMonth: Jan",
+    "  - name: Professional To Leader Graduate",
+    "    issuer: FedEx",
+    "    issueYear: '2018'",
+    "    issueMonth: Nov",
+    "    expires: false",
+    "    expirationYear: ''",
+    "    expirationMonth: ''",
+    "  - name: Dale Carnegie Course",
+    "    issuer: Dale Carnegie & Associates Inc",
+    "    issueYear: '2015'",
+    "    issueMonth: Nov",
+    "    expires: false",
+    "    expirationYear: ''",
+    "    expirationMonth: ''",
+    "",
+];
 
-let contact_information = [];
+let contact_information = ["                            cryan.brow@gmail.com | 870-754-2665 | github.com/cryanbrow | linkedin.com/in/bryan-crow                            "];
 
 var terminal = document.getElementById('terminal');
 
@@ -266,14 +298,15 @@ window.addEventListener('keydown', function (e) {
         e.preventDefault();
         var output = processCommand(input.textContent);
         cursor.remove();
-        line = document.createElement('div');
-        line.id = 'line';
-        line.textContent = output;
-        terminal.appendChild(line);
+        if (output != "") {
+            line = document.createElement('div');
+            line.id = 'line';
+            line.textContent = output;
+            terminal.appendChild(line);
+        }
         buildLine();
         scrollToBottom();
     } else if (e.ctrlKey) {
-
         if (e.key === 'c' || e.key === 'C') {
             e.preventDefault();
             input.textContent += "^C";
