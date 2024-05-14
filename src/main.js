@@ -1,3 +1,5 @@
+var pwd = ['home', 'user']
+
 let nameArt = [
 "                                                ___ _____   ___   _  _    ___ ___  _____      __                                               ",
 "                                               | _ ) _ \\ \\ / /_\\ | \\| |  / __| _ \\/ _ \\ \\    / /                                               ",
@@ -186,7 +188,7 @@ var line = document.getElementById('line');
 var header = document.getElementById('header');
 var input = document.getElementById('input');
 var cursor = document.getElementById('cursor');
-var pwd = ['home', 'user']
+
 var approvedCommands = {
     'ls': '',
     'pwd': '',
