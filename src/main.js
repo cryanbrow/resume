@@ -269,9 +269,9 @@ function handleCd(inputString) {
             case splitInput[1].startsWith('~/'):
                 pwd = ['home', 'user'];
                 splitOnSlash = splitInput[1].split('/');
-                splitOnSlash.forEach(dir =>{
-                    pwd.push(dir);
-                });
+                for (var i = 1 ; i < splitOnSlash.length ; i++) {
+                    pwd.push(splitOnSlash[i]);
+                }
                 return '';
             default:
                 return 'changing relative path'
