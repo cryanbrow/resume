@@ -279,7 +279,7 @@ function handleCd(inputString) {
                 }
                 return;
             default:
-                dirs = directory.split('/');
+                dirs = splitInput[1].split('/');
                 dirs.forEach(dir => {
                     pwd.push(dir);
                 });
