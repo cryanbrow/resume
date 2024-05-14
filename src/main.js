@@ -232,7 +232,11 @@ function processCommand(result) {
         returnString += '\n';
     } else if (result.startsWith('cat')) {
         returnString = handleCatInput(result);
-        returnString += '\n';
+        if (returnString != undefined) {
+            returnString += '\n';
+        } else {
+            returnString = '';
+        }
     } else if (result.startsWith('ls')) {
         returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
     } else if (result.startsWith('pwd')) {
