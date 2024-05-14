@@ -261,9 +261,9 @@ function handleCd(inputString) {
 }
 
 function handlePwd() {
-    var returnString = '';
+    var returnString = "";
     pwd.forEach(dir => {
-        returnString += dir;
+        returnString += "/" + dir;
     });
     return returnString;
 }
