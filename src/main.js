@@ -229,7 +229,11 @@ function processCommand(result) {
         createMOTD();
     } else if (result.startsWith('cd')) {
         returnString = handleCd(result);
-        returnString += '\n';
+        if (returnString != undefined) {
+            returnString += '\n';
+        } else {
+            returnString = '';
+        }
     } else if (result.startsWith('cat')) {
         returnString = handleCatInput(result);
         if (returnString != undefined) {
