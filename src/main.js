@@ -142,6 +142,8 @@ let certifications = [
     " ",
 ];
 
+let volunteer = [];
+
 let blankLine = "                                                                                                                                                ";
 
 let contact_information = ["                            cryan.brow@gmail.com | 870-754-2665 | github.com/cryanbrow | linkedin.com/in/bryan-crow                            "];

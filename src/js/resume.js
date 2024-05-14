@@ -182,6 +182,7 @@ let resumeJson = {
         "IOT Developer",
         "Data Design"
     ],
+    "volunteer": [],
     "positions": [
         {
             "employer": "FedEx",
