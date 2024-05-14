@@ -186,7 +186,7 @@ var line = document.getElementById('line');
 var header = document.getElementById('header');
 var input = document.getElementById('input');
 var cursor = document.getElementById('cursor');
-var pwd = '/home/user'
+var pwd = ['home', 'user']
 var approvedCommands = {
     'ls': '',
     'pwd': '',
@@ -234,7 +234,7 @@ function processCommand(result) {
     } else if (result.startsWith('ls')) {
         returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
     } else if (result.startsWith('pwd')) {
-        returnString = pwd + '\n';
+        handlePwd();
     } else {
         returnString = approvedCommands[result] || 'command not found';
         returnString += '\n';
@@ -258,6 +258,14 @@ function handleCd(inputString) {
                 return 'changing relative path'
         }
     }
+}
+
+function handlePwd() {
+    var returnString = '';
+    pwd.forEach(dir => {
+        returnString += dir;
+    });
+    return returnString;
 }
 
 function handleCatInput(inputString) {
