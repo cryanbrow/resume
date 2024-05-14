@@ -243,7 +243,14 @@ function processCommand(result) {
 }
 
 function handleCd(inputString) {
-    return 'changing dir';
+    var splitInput = inputString.split(' ');
+    if (splitInput.length == 1) {
+        return 'valid directory required';
+    } else if (splitInput.length > 2) {
+        return 'invalid cd command';
+    } else {
+        return 'changing dir to ' + splitInput[1];
+    }
 }
 
 function handleCatInput(inputString) {
