@@ -256,14 +256,14 @@ function handleCd(inputString) {
     var splitInput = inputString.split(' ');
     if (splitInput.length == 1) {
         pwd = ['home', 'user'];
-        return '';
+        return;
     } else {
         switch (true){
             case splitInput[1] == '..':
                 if (this.pwd.length > 0){
                     this.pwd.pop();
                 }
-                break;
+                return;
             case splitInput[1].startsWith('/'):
                 return 'starting at base path';
             case splitInput[1].startsWith('~/'):
@@ -272,7 +272,7 @@ function handleCd(inputString) {
                 for (var i = 1 ; i < splitOnSlash.length ; i++) {
                     pwd.push(splitOnSlash[i]);
                 }
-                return '';
+                return;
             default:
                 return 'changing relative path'
         }
