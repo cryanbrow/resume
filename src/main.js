@@ -255,16 +255,24 @@ function processCommand(result) {
 function handleCd(inputString) {
     var splitInput = inputString.split(' ');
     if (splitInput.length == 1) {
-        return 'valid directory required';
-    } else if (splitInput.length > 2) {
-        return 'invalid cd command';
+        pwd = ['home', 'user'];
+        return '';
     } else {
         switch (true){
             case splitInput[1] == '..':
-                this.pwd.pop();
+                if (this.pwd.length > 0){
+                    this.pwd.pop();
+                }
                 break;
             case splitInput[1].startsWith('/'):
                 return 'starting at base path';
+            case splitInput[1].startsWith('~/'):
+                pwd = ['home', 'user'];
+                splitOnSlash = splitInput[1].split('/');
+                splitOnSlash.forEach(dir =>{
+                    pwd.push(dir);
+                });
+                return '';
             default:
                 return 'changing relative path'
         }
