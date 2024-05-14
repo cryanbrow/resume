@@ -249,7 +249,14 @@ function handleCd(inputString) {
     } else if (splitInput.length > 2) {
         return 'invalid cd command';
     } else {
-        return 'changing dir to ' + splitInput[1];
+        switch (true){
+            case splitInput[1] == '..':
+                return 'going up a directory';
+            case splitInput[1].startsWith('/'):
+                return 'starting at base path';
+            default:
+                return 'changing relative path'
+        }
     }
 }
 
