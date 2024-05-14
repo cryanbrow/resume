@@ -254,7 +254,7 @@ function processCommand(result) {
 
 function handleCd(inputString) {
     var splitInput = inputString.split(' ');
-    if (splitInput.length == 1) {
+    if (splitInput.length == 1 || splitInput[1] == '~') {
         pwd = ['home', 'user'];
         return;
     } else {
@@ -279,7 +279,10 @@ function handleCd(inputString) {
                 }
                 return;
             default:
-                return 'changing relative path'
+                dirs = directory.split('/');
+                dirs.forEach(dir => {
+                    pwd.push(dir);
+                });
         }
     }
 }
