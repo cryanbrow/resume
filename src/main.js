@@ -265,7 +265,12 @@ function handleCd(inputString) {
                 }
                 return;
             case splitInput[1].startsWith('/'):
-                return 'starting at base path';
+                directory = splitInput[1].subString('/');
+                dirs = directory.split('/');
+                dirs.forEach(dir => {
+                    pwd.push(dir);
+                });
+                return;
             case splitInput[1].startsWith('~/'):
                 pwd = ['home', 'user'];
                 splitOnSlash = splitInput[1].split('/');
