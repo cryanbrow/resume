@@ -234,7 +234,7 @@ function processCommand(result) {
     } else if (result.startsWith('ls')) {
         returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
     } else if (result.startsWith('pwd')) {
-        handlePwd();
+        returnString = handlePwd() + '\n';
     } else {
         returnString = approvedCommands[result] || 'command not found';
         returnString += '\n';
