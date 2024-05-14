@@ -258,33 +258,37 @@ function handleCd(inputString) {
         pwd = ['home', 'user'];
         return;
     } else {
+        var resultArray = [...pwd];
         switch (true){
             case splitInput[1] == '..':
-                if (this.pwd.length > 0){
-                    this.pwd.pop();
+                if (resultArray.length > 0){
+                    resultArray.pop();
                 }
-                return;
+                break;
             case splitInput[1].startsWith('/'):
                 directory = splitInput[1].subString('/');
                 dirs = directory.split('/');
                 dirs.forEach(dir => {
-                    pwd.push(dir);
+                    resultArray.push(dir);
                 });
-                return;
+                break;
             case splitInput[1].startsWith('~/'):
-                pwd = ['home', 'user'];
+                resultArray = ['home', 'user'];
                 splitOnSlash = splitInput[1].split('/');
                 for (var i = 1 ; i < splitOnSlash.length ; i++) {
-                    pwd.push(splitOnSlash[i]);
+                    resultArray.push(splitOnSlash[i]);
                 }
-                return;
+                break;
             default:
                 dirs = splitInput[1].split('/');
                 dirs.forEach(dir => {
-                    pwd.push(dir);
+                    resultArray.push(dir);
                 });
+                break;
         }
+        pwd = resultArray;   
     }
+    return;
 }
 
 function handlePwd(homeDirReturn) {
