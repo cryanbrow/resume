@@ -234,7 +234,7 @@ function processCommand(result) {
     } else if (result.startsWith('ls')) {
         returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
     } else if (result.startsWith('pwd')) {
-        returnString = handlePwd() + '\n';
+        returnString = handlePwd(false) + '\n';
     } else {
         returnString = approvedCommands[result] || 'command not found';
         returnString += '\n';
@@ -251,7 +251,8 @@ function handleCd(inputString) {
     } else {
         switch (true){
             case splitInput[1] == '..':
-                return 'going up a directory';
+                this.pwd.pop();
+                break;
             case splitInput[1].startsWith('/'):
                 return 'starting at base path';
             default:
@@ -260,11 +261,18 @@ function handleCd(inputString) {
     }
 }
 
-function handlePwd() {
+function handlePwd(homeDirReturn) {
     var returnString = "";
-    pwd.forEach(dir => {
-        returnString += "/" + dir;
-    });
+    if (homeDirReturn && pwd[0] == 'home' && pwd[1] == 'user') {
+        returnString = "~";
+            for (var i = 2 ; i < pwd.length ; i++){
+                returnString += "/" + pwd[i];
+            }
+    } else {
+        pwd.forEach(dir => {
+            returnString += "/" + dir;
+        });
+    }
     return returnString;
 }
 
@@ -346,7 +354,7 @@ function buildLine() {
     line.id = 'line';
     header = document.createElement('span');
     header.id = 'header';
-    header.textContent = 'user@bryan-crow.com:~$ '
+    header.textContent = 'user@bryan-crow.com:' + handlePwd(true) + '$ '
     input = document.createElement('span');
     input.id = 'input';
     input.textContent = ''
