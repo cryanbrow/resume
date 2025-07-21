@@ -7,36 +7,6 @@ let nameArt = [
 "                                               |___/_|_\\ |_/_/ \\_\\_|\\_|  \\___|_|_\\\\___/ \\_/\\_/                                                 ",
 ]
 
-let skills = [
-    "                                                                                                                                                ",
-    "//Skills                                                                                                                                        ",
-    "                                                                                                                                                ",
-    ".container_orchestration            .programming                        .data_analysis                      .dev_ops                            ",
-    "├──kuberenetes                      ├──languages                        ├──machine_learning                 ├──CI                               ",
-    "│   ├──PKS/TKGI/TKGS/TKG2           │   ├──java                         │   ├──tensorflow                   │   ├──jenkins                      ",
-    "│   ├──AKS/GKE                      │   ├──python                       │   ├──keras                        │   ├──github_actions               ",
-    "│   ├──k3s/microK8s/minikube        │   ├──golang                       │   ├──opencv                       │   ├──terraform                    ",
-    "│   └──helm/kustomize               │   ├──js                           │   ├──pytorch                      │   ├──travis_ci                    ",
-    "└──container_distribution           │   └──ts                           │   ├──azure_ml_studio              │   └──concourse                    ",
-    "    ├──docker                       └──frameworks                       │   └──scikit_learn                 └──source_control                   ",
-    "    ├──podman                           ├──spring/spring_boot           └──data_preparation                     ├──git                          ",
-    "    ├──jib                              ├──angular                         ├──ml_data_cleaning                  └──svn                          ",
-    "    └──harbor                           ├──vue                             ├──outlier_removal                                                   ",
-    "                                        ├──ionic                           └──statistical_modeling          .monitoring                         ",
-    ".database_technologies                  ├──electron                                                         ├──prometheus                       ",
-    "├──oracle                               ├──react                        .mobile_development                 ├──alert_manager                    ",
-    "├──cassandra/datastax                   └──wails                        ├──native_android                   ├──appdynamics                      ",
-    "├──redis                                                                ├──ionic                            ├──loki                             ",
-    "├──h2                               .protocols                          └──react_native                     ├──pagerduty                        ",
-    "└──mongodb                          ├──REST/SOAP/graphql                                                    ├──splunk                           ",
-    "                                    ├──RPC                              .methodologies                      ├──grafana                          ",
-    ".project_management                 ├──MQTT                             ├──paired_programming               └──ELK                              ",
-    "├──agile                            ├──JMS                              ├──BDD                                                                  ",
-    "├──SAFE                             └──Kafka                            └──TDD                                                                  ",
-    "├──scrum                                                                                                                                        ",
-    "└──kanban                                                                                                                                       ",
-    "                                                                                                                                                "];
-
 let experience = [
     "                                                                                                                                                ",
     "//Experience                                                                                                                                    ",
@@ -202,112 +172,79 @@ var approvedCommands = {
     'll': 'll',
     '': '',
 };
-var directoryListings = {
-    '/': ['home', 'usr', 'var', 'opt', 'lib', 'tmp'],
-    '/home': ['user', 'bryan'],
-    '/home/user': ['experience.yml', 'projects.yml', 'about-me.yml'],
-    '/home/bryan': ['experience.yml', 'projects.yml', 'about-me.yml'],
-    '/usr': ['local', 'bin'],
-    '/usr/local': [],
-    '/usr/bin': ['kubectl', 'cat', 'cd', 'motd', 'clear', 'ls', 'pwd'],
-    '/var': [],
-    '/opt': [],
-    '/lib': [],
-    '/tmp': [],
+
+function printLinesWithDelay(lines, delay = 50) {
+    return new Promise(resolve => {
+        let i = 0;
+        function printNext() {
+            if (i >= lines.length) {
+                resolve(); // Done printing
+                return;
+            }
+            const line = document.createElement('div');
+            line.id = 'line';
+            line.textContent = lines[i];
+            terminal.appendChild(line);
+            scrollToBottom();
+            i++;
+            setTimeout(printNext, delay);
+        }
+        printNext();
+    });
 }
 
 function processCommand(result) {
-    returnString = '';
-    if (result == 'clear') {
-        removeChildrenWithId(terminal);
-    } else if (result.startsWith('help')) {
-        handleHelp();
-    } else if (result.startsWith('resume')) {
-        returnString += handleResumeCommand(result);
-        returnString += '\n';
-    } else if (result == 'motd') {
-        createMOTD();
-    } else if (result.startsWith('cd')) {
-        returnString = handleCd(result);
-        if (returnString != undefined) {
+    return new Promise(async resolve => {
+        let returnString = '';
+
+        if (result === 'clear') {
+            removeChildrenWithId(terminal);
+        } else if (result.startsWith('help')) {
+            handleHelp();
+        } else if (result.startsWith('resume')) {
+            returnString += await handleResumeCommand(result);
             returnString += '\n';
+        } else if (result === 'motd') {
+            createMOTD();
+        } else if (result.startsWith('cd')) {
+            returnString = handleCd(result);
+            if (returnString !== undefined) returnString += '\n';
+            else returnString = '';
+        } else if (result.startsWith('cat')) {
+            const output = handleCatInput(result);
+            if (output !== undefined) {
+                const div = document.createElement('div');
+                div.id = 'line';
+                div.textContent = output;
+                terminal.appendChild(div);
+                scrollToBottom();
+                returnString = '\n';
+            }
+        } else if (result.startsWith('ls -l')) {
+            handleLsLong();
+            scrollToBottom();
+            return resolve('');
+        } else if (result.startsWith('ls')) {
+            handleLs();
+            scrollToBottom();
+            return resolve('');
+        } else if (result.startsWith('pwd')) {
+            returnString = handlePwd(false) + '\n';
         } else {
-            returnString = '';
-        }
-    } else if (result.startsWith('cat')) {
-        returnString = handleCatInput(result);
-        if (returnString != undefined) {
+            returnString = approvedCommands[result] || 'command not found';
             returnString += '\n';
-        } else {
-            returnString = '';
         }
-    } else if (result.startsWith('ls')) {
-        returnString = 'experience.yml  projects.yml  about-me.yml file2.txt  directory1  directory2' + '\n';
-    } else if (result.startsWith('pwd')) {
-        returnString = handlePwd(false) + '\n';
-    } else {
-        returnString = approvedCommands[result] || 'command not found';
-        returnString += '\n';
-    }
-    return returnString;
+
+        resolve(returnString);
+    });
 }
 
-function handleCd(inputString) {
-    var splitInput = inputString.split(' ');
-    if (splitInput.length == 1 || splitInput[1] == '~') {
-        pwd = ['home', 'user'];
-        return;
-    } else {
-        var resultArray = [...pwd];
-        switch (true){
-            case splitInput[1] == '..':
-                if (resultArray.length > 0){
-                    resultArray.pop();
-                }
-                break;
-            case splitInput[1].startsWith('/'):
-                directory = splitInput[1].subString('/');
-                dirs = directory.split('/');
-                dirs.forEach(dir => {
-                    resultArray.push(dir);
-                });
-                break;
-            case splitInput[1].startsWith('~/'):
-                resultArray = ['home', 'user'];
-                splitOnSlash = splitInput[1].split('/');
-                for (var i = 1 ; i < splitOnSlash.length ; i++) {
-                    resultArray.push(splitOnSlash[i]);
-                }
-                break;
-            default:
-                dirs = splitInput[1].split('/');
-                dirs.forEach(dir => {
-                    resultArray.push(dir);
-                });
-                break;
-        }
-        pwd = resultArray;   
-    }
-    return;
-}
 
 function handlePwd(homeDirReturn) {
-    var returnString = "";
-    if (homeDirReturn && pwd[0] == 'home' && pwd[1] == 'user') {
-        returnString = "~";
-            for (var i = 2 ; i < pwd.length ; i++){
-                returnString += "/" + pwd[i];
-            }
-    } else {
-        pwd.forEach(dir => {
-            returnString += "/" + dir;
-        });
+    if (homeDirReturn && pwd.join('/') === 'home/user') {
+        return '~';
     }
-    return returnString;
-}
-
-function handleCatInput(inputString) {
-    return 'You certainly tried to cat something.';
+    return '/' + pwd.join('/');
 }
 
 function handleHelp() {
@@ -328,8 +265,8 @@ function splitInput(inputString, splitString) {
 }
 
 function removeChildrenWithId(element) {
-    var children = element.childNodes;
-    for (var i = 0; i < children.length; i++) {
+    const children = element.childNodes;
+    for (let i = 0; i < children.length; i++) {
         if (children[i].id === 'line') {
             element.removeChild(children[i]);
             i--; // Adjust counter as childNodes is a live collection
@@ -338,7 +275,7 @@ function removeChildrenWithId(element) {
 }
 
 function createMOTD() {
-    var motdLines = ['Welcome to Bryan Crow Resume 1.0.0 LTS',
+    const motdLines = ['Welcome to Bryan Crow Resume 1.0.0 LTS',
         '  ',
         '|site|* LinkedIn ~https://www.linkedin.com/in/bryan-crow/',
         '|site|* GitHub ~https://github.com/cryanbrow',
@@ -347,8 +284,13 @@ function createMOTD() {
         'or enter `resume experience`, `resume skills`, or just `resume` to print everything.',
         '  ',
         'All files supporting this are in the pwd, use ls and cat to read files directly.',
-        '  ']
-    for (var i = 0; i < motdLines.length; i++) {
+        '  '];
+    let result;
+    let urlComponents;
+    let urlLabelSpan;
+    let urlHref;
+    let motdSpan;
+    for (let i = 0; i < motdLines.length; i++) {
         if (motdLines[i].startsWith('|site|')) {
             result = splitInput(motdLines[i], '|site|')
 
@@ -397,17 +339,19 @@ function buildLine() {
     terminal.appendChild(line);
 }
 
-window.addEventListener('keydown', function (e) {
+window.addEventListener('keydown', async function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
-        var output = processCommand(input.textContent);
         cursor.remove();
-        if (output != "") {
-            line = document.createElement('div');
-            line.id = 'line';
-            line.textContent = output;
-            terminal.appendChild(line);
+        const output = await processCommand(input.textContent);
+
+        if (output?.trim()) {
+            const div = document.createElement('div');
+            div.id = 'line';
+            div.textContent = output.trimEnd();
+            terminal.appendChild(div);
         }
+
         buildLine();
         scrollToBottom();
     } else if (e.ctrlKey) {

@@ -15,6 +15,11 @@ body {
     animation: blink 1s step-end infinite;
 }
 
+#terminal span {
+    font-family: monospace;
+    white-space: pre;
+}
+
 @keyframes blink {
 
     from,
