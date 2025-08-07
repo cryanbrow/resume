@@ -1,12 +1,3 @@
-var pwd = ['home', 'user']
-
-let nameArt = [
-"                                                ___ _____   ___   _  _    ___ ___  _____      __                                               ",
-"                                               | _ ) _ \\ \\ / /_\\ | \\| |  / __| _ \\/ _ \\ \\    / /                                               ",
-"                                               | _ \\   /\\ V / _ \\| .` | | (__|   / (_) \\ \\/\\/ /                                                ",
-"                                               |___/_|_\\ |_/_/ \\_\\_|\\_|  \\___|_|_\\\\___/ \\_/\\_/                                                 ",
-]
-
 let experience = [
     "                                                                                                                                                ",
     "//Experience                                                                                                                                    ",
@@ -78,14 +69,6 @@ let awards = [
     "}",
 ];
 
-let divider = "≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡";
-
-let introduction = ["/** Lead Technical Developer with greater than ten years of leadership experience in process and technical change. Experienced in training and",
-    "advancing teams in adoption of modern coding, design, and pairing practices. Successfully implemented large scale, data intensive, IOT",
-    "implementations for large automation projects. **/"];
-
-let keywords = ["                                Software Developer && Software Architect && IOT Developer && Kubernetes Engineer                                "];
-
 let certifications = [
     "//Certifications",
     " ",
@@ -117,37 +100,6 @@ let certifications = [
 let volunteer = [];
 
 let blankLine = "                                                                                                                                                ";
-
-let contact_information = ["                            cryan.brow@gmail.com | 870-754-2665 | github.com/cryanbrow | linkedin.com/in/bryan-crow                            "];
-
-let help = [
-    "resume can be used to print information about Bryan Crow",
-    " ",
-    "Main Commands:",
-    "  resume               Prints out the entirety of the resume in preferred order",
-    "  resume experience    Lists work experience in chronological order",
-    "  resume skills        Lists skills in tree format",
-    "  resume certificates  Presents certificates",
-    "  resume awards        Displays awards",
-    " ",
-    "Additional Commands:",
-    "  resume name          Displays name in ASCII art",
-    "  resume divider       Outputs a divider",
-    "  resume contact       Shows contact information",
-    "  resume introduction  Introduction about me",
-    "  resume keywords      Keywords describing me",
-    " ",
-    "Work In Progress:",
-    "  clear (ctrl+l)       Clears the display",
-    "  cancel (ctrl+c)      Clears current input",
-    "  pwd                  Present Working Directory",
-    "  cd                   Change Directory",
-    "  cat <file>           Displays contents of selected file",
-    "  motd                 Message of the Day",
-    "  whoami               Current users name",
-    "  ls                   List contents of current directory",
-    " ",
-]
 
 var terminal = document.getElementById('terminal');
 
@@ -239,23 +191,6 @@ function processCommand(result) {
     });
 }
 
-
-function handlePwd(homeDirReturn) {
-    if (homeDirReturn && pwd.join('/') === 'home/user') {
-        return '~';
-    }
-    return '/' + pwd.join('/');
-}
-
-function handleHelp() {
-    help.forEach(hhelp => {
-        line = document.createElement('div');
-        line.id = 'line';
-        line.textContent = hhelp;
-        terminal.appendChild(line);
-    });
-}
-
 function splitInput(inputString, splitString) {
     if (inputString.includes(splitString)) {
         return inputString.split(splitString)[1];
@@ -270,53 +205,6 @@ function removeChildrenWithId(element) {
         if (children[i].id === 'line') {
             element.removeChild(children[i]);
             i--; // Adjust counter as childNodes is a live collection
-        }
-    }
-}
-
-function createMOTD() {
-    const motdLines = ['Welcome to Bryan Crow Resume 1.0.0 LTS',
-        '  ',
-        '|site|* LinkedIn ~https://www.linkedin.com/in/bryan-crow/',
-        '|site|* GitHub ~https://github.com/cryanbrow',
-        '  ',
-        'This is an interactive resume. To get started, enter help to get available commands',
-        'or enter `resume experience`, `resume skills`, or just `resume` to print everything.',
-        '  ',
-        'All files supporting this are in the pwd, use ls and cat to read files directly.',
-        '  '];
-    let result;
-    let urlComponents;
-    let urlLabelSpan;
-    let urlHref;
-    let motdSpan;
-    for (let i = 0; i < motdLines.length; i++) {
-        if (motdLines[i].startsWith('|site|')) {
-            result = splitInput(motdLines[i], '|site|')
-
-            urlComponents = result.split('~');
-
-            line = document.createElement('div');
-            line.id = 'line';
-            urlLabelSpan = document.createElement('span');
-            urlLabelSpan.id = 'urlLabelSpan' + i;
-            urlLabelSpan.textContent = urlComponents[0];
-            urlHref = document.createElement('a');
-            urlHref.id = 'href' + i;
-            urlHref.setAttribute('href', urlComponents[1]);
-            urlHref.setAttribute('target', '_blank');
-            urlHref.textContent = urlComponents[1];
-            line.appendChild(urlLabelSpan);
-            line.appendChild(urlHref);
-            terminal.appendChild(line);
-        } else {
-            line = document.createElement('div');
-            line.id = 'line';
-            motdSpan = document.createElement('span');
-            motdSpan.id = 'motd' + i;
-            motdSpan.textContent = motdLines[i];
-            line.appendChild(motdSpan);
-            terminal.appendChild(line);
         }
     }
 }
@@ -380,10 +268,23 @@ function scrollToBottom() {
 
 function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-};
-
-if (isMobileDevice()) {
-    console.log("You are using a mobile device");
-} else {
-    console.log("You are not using a mobile device");
 }
+
+let nameArt = [];
+figlet.defaults({ fontPath: "assets/fonts" });
+
+figlet.preloadFonts(["Standard"]);
+
+figlet(String(asciiResume.contact.firstName + " " + asciiResume.contact.lastName), "Standard", function(err, data) {
+    if (err) {
+        console.log("Something went wrong...");
+        console.dir(err);
+        return;
+    }
+    nameArt = data.split("\n");
+    for (let i = 0; i < nameArt.length; i++) {
+        let padAmount = (144 - nameArt[i].length) / 2
+        nameArt[i] = String(nameArt[i]).padStart(nameArt[i].length + padAmount, " ");
+        nameArt[i] = String(nameArt[i]).padEnd(144, " ");
+    }
+});

@@ -1,0 +1,4 @@
+function formattedName() {
+    return nameArt;
+}
+
