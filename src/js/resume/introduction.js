@@ -19,5 +19,6 @@ function splitIntroduction(str, maxLength) {
         result.push(currentLine.trim());
     }
 
+    result.push('');
     return result;
 }
