@@ -29,7 +29,7 @@ async function handleResumeCommand(command) {
                     await printLinesWithDelay(contactInformation(), buildLine);
                     break;
                 case resumeCommand.includes("experience"):
-                    await printLinesWithDelay(experience, buildLine);
+                    await printLinesWithDelay(generateAsciiExperienceSection(asciiResume.experience), buildLine);
                     break;
                 default:
                     returnString += 'invalid resume command';
@@ -53,7 +53,7 @@ async function printEntireResume() {
     await printLinesWithDelay([divider], buildLine);
     await printLinesWithDelay([blankLine], buildLine);
     await printLinesWithDelay(splitIntroduction(asciiResume.introduction, 144), buildLine);
-    await printLinesWithDelay(experience, buildLine);
+    await printLinesWithDelay(generateAsciiExperienceSection(asciiResume.experience), buildLine);
     await printLinesWithDelay(generateFourColumnTree(asciiResume.skills), buildLine);
     await printLinesWithDelay(certifications, buildLine);
     await printLinesWithDelay(awards, buildLine);

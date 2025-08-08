@@ -282,8 +282,8 @@ const asciiResume = {
             "title": "Senior Full Stack Developer",
             "company": "Symetri",
             "location": "Springfield, MO",
-            "startDate": "07/2025",
-            "endDate": "Present",
+            "startYear": "2025",
+            "endYear": null,
             "description": "Continue integration work from Team D3 post-merger, building and maintaining data pipelines between CAD, PDM, PLM, and ERP systems to automate engineering workflows and ensure consistent product data across platforms.",
             "accomplishments": []
         },
@@ -291,8 +291,8 @@ const asciiResume = {
             "title": "Senior Application Developer",
             "company": "TeamD3",
             "location": "Springfield, MO",
-            "startDate": "08/2024",
-            "endDate": "07/2025",
+            "startYear": "2024",
+            "endYear": "2025",
             "description": "Led development of system integrations linking CAD (AutoCAD, SolidWorks, Inventor), PDM (Vault, PDM, Upchain), PLM (Fusion Manage), and ERP (NetSuite, Odoo), streamlining product data flow and lifecycle management across engineering and enterprise systems.",
             "accomplishments": []
         },
@@ -300,46 +300,46 @@ const asciiResume = {
             "title": "Chief Engineering Specialist/Principal",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "10/2021",
-            "endDate": "08/2024",
+            "startYear": "2021",
+            "endYear": "2024",
             "description": "Drove architecture and proof-of-concept development for far-edge tracking systems using RFID, dimensioning-in-motion, and BLE. Built edge deployment automation, monitoring, and telemetry pipelines to support real-time shipment visibility at scale.",
             "accomplishments": [
-                - "Rolled out dimensioning in motion software to 150+ service centers",
-                - "Resulted in 25 million dollars in recovered revenue per quarter",
-                - "Filed 8 patents surrounding real time location tracking with RFID"
+                "Rolled out dimensioning in motion software to 150+ service centers",
+                "Resulted in 25 million dollars in recovered revenue per quarter",
+                "Filed 8 patents surrounding real time location tracking with RFID"
             ]
         },
         {
             "title": "Full Stack Developer Advisor",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "12/2018",
-            "endDate": "09/2021",
+            "startYear": "2018",
+            "endYear": "2021",
             "description": "Led development of edge-based sensor data applications and REST APIs. Managed Kubernetes, Kafka, and Cassandra clusters, and built CI/CD pipelines with Jenkins to support real-time freight logistics across distributed systems.",
             "accomplishments": [
-                - "Implemented anedge security solution with trenching capabilities",
-                - "Pioneered Kubernetes adoption in production for FedEx",
-                - "Architecture guidance for the rewriting the forklift computer"
+                "Implemented anedge security solution with trenching capabilities",
+                "Pioneered Kubernetes adoption in production for FedEx",
+                "Architecture guidance for the rewriting the forklift computer"
             ]
         },
         {
             "title": "Senior Programmer Analyst",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "08/2016",
-            "endDate": "12/2018",
+            "startYear": "2016",
+            "endYear": "2018",
             "description": "Strong developer in prototyping and advancing Kafka and Cassandra. Promoted Test Driven Development, Paired Programming, and Code Quality Gates. Primary workload involved high volume sensor data streaming applications and REST APIs in Java.",
             "accomplishments": [
-                - "Established Kafka and Cassandra implementation at FedEx",
-                - "Created visualizer to display location of shipments and forklifts"
+                "Established Kafka and Cassandra implementation at FedEx",
+                "Created visualizer to display location of shipments and forklifts"
             ]
         },
         {
             "title": "Programmer Analyst",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "11/2013",
-            "endDate": "08/2016",
+            "startYear": "2013",
+            "endYear": "2016",
             "description": "Developed responsive web UIs using Angular, Bootstrap, and Node.js. Built numerous Java REST APIs.",
             "accomplishments": []
         },
@@ -347,8 +347,8 @@ const asciiResume = {
             "title": "Associate Programmer Analyst",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "06/2012",
-            "endDate": "11/2013",
+            "startYear": "2012",
+            "endYear": "2013",
             "description": "Built redundancy and reliability applications including auto correction for data errors, failure alerting, and retry logic implementation.",
             "accomplishments": []
         },
@@ -356,8 +356,8 @@ const asciiResume = {
             "title": "Lead Computer Operator",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "05/2011",
-            "endDate": "06/2012",
+            "startYear": "05/2011",
+            "endYear": "2012",
             "description": "Oversaw team responsible for monitoring and preventive maintenance of mainframes and servers. Built tools for offsite tape backup tracking and reclamation.",
             "accomplishments": []
         },
@@ -365,8 +365,8 @@ const asciiResume = {
             "title": "Computer Operator",
             "company": "FedEx Services",
             "location": "Harrison, AR",
-            "startDate": "04/2007",
-            "endDate": "05/2011",
+            "endYear": "2007",
+            "endDate": "2011",
             "description": "Monitored and maintained mainframes and servers, providing alerting and preventive fixes in the FedEx Freight data center.",
             "accomplishments": []
         }
