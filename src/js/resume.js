@@ -14,7 +14,7 @@ async function handleResumeCommand(command) {
                     await printLinesWithDelay(awards, buildLine);
                     break;
                 case resumeCommand.includes("cert"):
-                    await printLinesWithDelay(certifications, buildLine);
+                    await printLinesWithDelay(generateCertifications(asciiResume.certifications), buildLine);
                     break;
                 case resumeCommand.includes("keywords"):
                     await printLinesWithDelay(keywords(), buildLine);
@@ -55,6 +55,6 @@ async function printEntireResume() {
     await printLinesWithDelay(splitIntroduction(asciiResume.introduction, 144), buildLine);
     await printLinesWithDelay(generateAsciiExperienceSection(asciiResume.experience), buildLine);
     await printLinesWithDelay(generateFourColumnTree(asciiResume.skills), buildLine);
-    await printLinesWithDelay(certifications, buildLine);
+    await printLinesWithDelay(generateCertifications(asciiResume.certifications), buildLine);
     await printLinesWithDelay(awards, buildLine);
 }
