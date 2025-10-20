@@ -101,6 +101,9 @@ let volunteer = [];
 
 let blankLine = "                                                                                                                                                ";
 
+window.commandHistory = window.commandHistory || [];
+const commandHistory = window.commandHistory;
+
 var terminal = document.getElementById('terminal');
 
 createMOTD();
@@ -120,6 +123,10 @@ var approvedCommands = {
     'help': 'Available Commands',
     'cd': '',
     'cat': '',
+    'date': '',
+    'history': '',
+    'uname': '',
+    'echo': '',
     'ls -al': 'ls -al',
     'll': 'll',
     '': '',
@@ -148,22 +155,23 @@ function printLinesWithDelay(lines, delay = 50) {
 function processCommand(result) {
     return new Promise(async resolve => {
         let returnString = '';
+        const trimmedResult = result.trim();
 
-        if (result === 'clear') {
+        if (trimmedResult === 'clear') {
             removeChildrenWithId(terminal);
-        } else if (result.startsWith('help')) {
+        } else if (trimmedResult.startsWith('help')) {
             handleHelp();
-        } else if (result.startsWith('resume')) {
-            returnString += await handleResumeCommand(result);
+        } else if (trimmedResult.startsWith('resume')) {
+            returnString += await handleResumeCommand(trimmedResult);
             returnString += '\n';
-        } else if (result === 'motd') {
+        } else if (trimmedResult === 'motd') {
             createMOTD();
-        } else if (result.startsWith('cd')) {
-            returnString = handleCd(result);
+        } else if (trimmedResult.startsWith('cd')) {
+            returnString = handleCd(trimmedResult);
             if (returnString !== undefined) returnString += '\n';
             else returnString = '';
-        } else if (result.startsWith('cat')) {
-            const output = handleCatInput(result);
+        } else if (trimmedResult.startsWith('cat')) {
+            const output = handleCatInput(trimmedResult);
             if (output !== undefined) {
                 const div = document.createElement('div');
                 div.id = 'line';
@@ -172,18 +180,33 @@ function processCommand(result) {
                 scrollToBottom();
                 returnString = '\n';
             }
-        } else if (result.startsWith('ls -l')) {
+        } else if (trimmedResult === 'history') {
+            const historyOutput = handleHistory();
+            returnString = historyOutput ? historyOutput + '\n' : '\n';
+        } else if (trimmedResult === 'date') {
+            returnString = handleDate() + '\n';
+        } else if (trimmedResult.startsWith('uname')) {
+            returnString = handleUname(trimmedResult) + '\n';
+        } else if (trimmedResult.startsWith('echo')) {
+            const echoOutput = handleEcho(trimmedResult);
+            const div = document.createElement('div');
+            div.id = 'line';
+            div.textContent = echoOutput;
+            terminal.appendChild(div);
+            scrollToBottom();
+            return resolve('');
+        } else if (trimmedResult.startsWith('ls -l')) {
             handleLsLong();
             scrollToBottom();
             return resolve('');
-        } else if (result.startsWith('ls')) {
+        } else if (trimmedResult.startsWith('ls')) {
             handleLs();
             scrollToBottom();
             return resolve('');
-        } else if (result.startsWith('pwd')) {
+        } else if (trimmedResult.startsWith('pwd')) {
             returnString = handlePwd(false) + '\n';
         } else {
-            returnString = approvedCommands[result] || 'command not found';
+            returnString = approvedCommands[trimmedResult] || 'command not found';
             returnString += '\n';
         }
 
@@ -231,6 +254,13 @@ window.addEventListener('keydown', async function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
         cursor.remove();
+
+        const enteredCommand = input.textContent;
+        if (enteredCommand.trim().length > 0) {
+            commandHistory.push(enteredCommand);
+        }
+
+
         const output = await processCommand(input.textContent);
 
         if (output?.trim()) {
