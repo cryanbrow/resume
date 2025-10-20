@@ -34,6 +34,7 @@ let help = [
     "  date                 Displays the current date and time",
     "  uname [-a|--all]     Shows information about the resume system",
     "  echo <text>          Prints text to the terminal",
+    "  kubectl              Explore the simulated Kubernetes cluster",
     "  motd                 Message of the Day",
     "  whoami               Current users name",
     "  ls                   List contents of current directory",

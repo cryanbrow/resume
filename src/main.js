@@ -180,6 +180,9 @@ function processCommand(result) {
                 scrollToBottom();
                 returnString = '\n';
             }
+        } else if (trimmedResult.startsWith('kubectl')) {
+            const kubectlOutput = handleKubectlCommand(trimmedResult);
+            returnString = kubectlOutput ? kubectlOutput + '\n' : '\n';
         } else if (trimmedResult === 'history') {
             const historyOutput = handleHistory();
             returnString = historyOutput ? historyOutput + '\n' : '\n';
